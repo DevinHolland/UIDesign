@@ -14,26 +14,26 @@
     <section id="editor">
         <form id="add-new-form-template">
             <label for="html">HTML</label>
-            <textarea id="html"></textarea>
+            <textarea autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="html"></textarea>
 
             <label for="css">CSS</label>
-            <textarea id="css"></textarea>
+            <textarea autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="css"></textarea>
         </form>
+
+        <div id="play">
+            <button id="play-button">Play!</button>
+            <button id="stop-button">Stop</button>
+        </div>
     </section>
 
     <section id="game-screen">
     </section>
 
-    <div id="hidden-items">
-
-    </div>
-
     <script>
         $(function(){
-            var $editor = $('#editor');
-            var $gameScreen = $("game-screen");
-            var $levels = $("#levels");
-            var currentSelected = "";
+            var $gameScreen = $("#game-screen");
+            var currentHTML = "";
+            var gameInterval;
 
             $(document).delegate('textarea', 'keydown', function(e) {
                 var keyCode = e.keyCode || e.which;
@@ -68,12 +68,63 @@
             resize();
             $(window).resize(resize);
 
-            $("#add-element").on('click', function(){
-                $("#add-new-form").remove();
+            $('#play-button').on('click', function(){
 
-                var newForm = $('#add-new-form-template').clone();
-                newForm.attr('id', 'add-new-form');
-                $("#add-new").append(newForm);
+                currentHTML = $gameScreen.html();
+
+                $('#play-button').hide();
+                $('#stop-button').show();
+
+                var gravity = 20;
+                var terminalVelocity = 20;
+                var $platforms = $gameScreen.find(".platform");
+                var $character = $gameScreen.find("#character");
+                console.log($character);
+
+                var platforms = [];
+                if($character.length == 0){
+                    alert("Character required.");
+                    return;
+                }
+
+                $character.velocity = {x:0,y:0};
+
+                $platforms.each(function(){
+                    platforms.push({
+                        height: $(this).height(),
+                        width: $(this).width(),
+                        top: $(this).offset().top,
+                        left: $(this).offset().left
+                    })
+                });
+
+
+                var curTime = (new Date()).getTime();
+                var prevTime;
+                var deltaTime;
+
+                gameInterval = setInterval(function(){
+                    prevTime = curTime;
+                    curTime = Date.now();
+                    deltaTime = curTime - prevTime;
+
+                    if($character.velocity.y + (gravity * deltaTime/1000) <= terminalVelocity )
+                        $character.velocity.y = $character.velocity.y + (gravity * deltaTime/1000);
+
+                    console.log($character.velocity.y);
+                    $character.css({
+                        top: $character.offset().top + $character.velocity.y,
+                    });
+                }, 16);
+            });
+
+            $('#stop-button').on('click', function(){
+                clearInterval(gameInterval);
+                $gameScreen.html(currentHTML);
+                currentHTML = '';
+
+                $(this).hide();
+                $('#play-button').show();
             });
         });
     </script>

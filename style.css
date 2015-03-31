@@ -87,10 +87,29 @@ textarea {
     cursor: pointer;
 }
 
+#play {
+    text-align: center;
+}
+
+#play-button, #stop-button {
+    font-size: 2em;
+    padding: 10px;
+}
+
 .platform {
     height: 20px;
     width: 80px;
     background-color: black;
     color: white;
     position: absolute;
+}
+
+#character {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+}
+
+#stop-button {
+    display: none;
 }
