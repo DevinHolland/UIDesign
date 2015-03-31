@@ -1,0 +1,103 @@
+/* <editor-fold desc="reset"> */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/* </editor-fold> */
+h1 {
+    font-size: 2em;
+}
+
+section {
+    vertical-align: top;
+}
+
+label {
+    display: block;
+}
+
+textarea {
+    width: 97%;
+    max-width: 97%;
+    height: 100px;
+}
+
+#hidden-items {
+    display: none;
+}
+
+#levels {
+    display: inline-block;
+    width: 13%;
+    padding: 1%;
+    background-color: #00957f;
+}
+
+#game-screen {
+    position: relative;
+    display: inline-block;
+    width: 69%;
+}
+
+#editor {
+    display: inline-block;
+    width: 15%;
+    background-color: #00957f;
+    float: right;
+}
+
+#add-element {
+    width: 100%;
+    height: 50px;
+}
+
+#add-element:hover {
+    cursor: pointer;
+}
+
+.platform {
+    height: 20px;
+    width: 80px;
+    background-color: black;
+    color: white;
+    position: absolute;
+}
