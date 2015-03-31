@@ -56,20 +56,14 @@ label {
 }
 
 textarea {
-    width: 97%;
-    max-width: 97%;
-    height: 100px;
+    width: 99%;
+    max-width: 99%;
+    height: 400px;
+    resize: none;
 }
 
 #hidden-items {
     display: none;
-}
-
-#levels {
-    display: inline-block;
-    width: 13%;
-    padding: 1%;
-    background-color: #00957f;
 }
 
 #game-screen {
@@ -80,9 +74,8 @@ textarea {
 
 #editor {
     display: inline-block;
-    width: 15%;
+    width: 30%;
     background-color: #00957f;
-    float: right;
 }
 
 #add-element {

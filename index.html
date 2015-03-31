@@ -7,37 +7,25 @@
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 </head>
 <body>
-    <section id="levels">
-        <h1>Levels</h1>
-        <div></div>
-    </section>
+<style id="stylesheet">
 
-    <section id="game-screen">
-    </section>
+</style>
 
     <section id="editor">
-        <div id="add-new">
-            <button id="add-element">Add Element</button>
-        </div>
-        <h1>Elements</h1>
-    </section>
-
-    <div id="hidden-items">
         <form id="add-new-form-template">
             <label for="html">HTML</label>
             <textarea id="html"></textarea>
 
             <label for="css">CSS</label>
-            <textarea id="css">
-selector {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-            </textarea>
-
-            <button id="submit-add" type="button">Done</button>
+            <textarea id="css"></textarea>
         </form>
+    </section>
+
+    <section id="game-screen">
+    </section>
+
+    <div id="hidden-items">
+
     </div>
 
     <script>
@@ -46,7 +34,6 @@ selector {
             var $gameScreen = $("game-screen");
             var $levels = $("#levels");
             var currentSelected = "";
-            var lastId = 0;
 
             $(document).delegate('textarea', 'keydown', function(e) {
                 var keyCode = e.keyCode || e.which;
@@ -67,34 +54,11 @@ selector {
             });
 
             $(document).delegate('#html', 'keyup', function(e){
-                console.log("html keyup");
-                try {
-                    var $currentHTML = $($(this).val());
-                    var $previousHTML = $("#" + currentSelected);
+                $('#game-screen').html($(this).val());
+            });
 
-                    if ($currentHTML.attr('id') != undefined && $currentHTML.attr('id') != '') {
-                        currentSelected = $currentHTML.attr('id');
-                    } else if(currentSelected == '') {
-                        lastId++;
-                        currentSelected = "platform" + (lastId);
-                    }
-
-                    $currentHTML.attr('id', currentSelected);
-
-                    if(currentSelected != '') {
-                        if ($previousHTML.length == 0) {
-                            $("#game-screen").append($currentHTML);
-                        } else {
-                            $previousHTML.attr('id', currentSelected).html($currentHTML.html());
-
-                            if ($currentHTML.attr("style") != undefined) {
-                                $previousHTML.attr('style', $currentHTML.attr("style"));
-                            }
-                        }
-                    }
-                } catch(err){
-
-                }
+            $(document).delegate('#css', 'keyup', function(e){
+                $('#stylesheet').html($(this).val());
             });
 
             $(document).delegate("#submit-add", 'click', function(e){
