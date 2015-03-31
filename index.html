@@ -34,6 +34,7 @@
             var $gameScreen = $("#game-screen");
             var currentHTML = "";
             var gameInterval;
+            var inGame = false;
 
             $(document).delegate('textarea', 'keydown', function(e) {
                 var keyCode = e.keyCode || e.which;
@@ -91,6 +92,18 @@
                 };
             })();
 
+            function endGame(){
+                clearInterval(gameInterval);
+
+                $gameScreen.html(currentHTML);
+                currentHTML = '';
+
+                $('#stop-button').hide();
+                $('#play-button').show();
+                $('textarea').attr("disabled", false);
+                inGame = false;
+            }
+
             $('#play-button').on('click', function(){
                 var $character = $gameScreen.find("#character");
 
@@ -98,6 +111,8 @@
                     alert("Character required.");
                     return;
                 }
+
+                inGame = true;
 
                 $('textarea').attr("disabled", true);
 
@@ -110,27 +125,28 @@
                 var terminalVelocity = 12.5;
                 var $platforms = $gameScreen.find(".platform");
 
-                $character.velocity = {x:0,y:terminalVelocity};
+                $character.velocity = {x:0,y:0};
 
                 $(document).keydown(function(e) {
-                    switch(e.which) {
-                        case 37: // left
-                                $character.velocity.x = -5;
-                            break;
+                    if(inGame) {
+                        if (e.which == 65 || e.which == 37) {
+                            $character.velocity.x = -5;
+                        } else if (e.which == 68 || e.which == 39) {
+                            $character.velocity.x = 5;
+                        } else {
+                            return;
+                        }
 
-                        case 39: // right
-                                $character.velocity.x = 5;
-                            break;
-
-                        default: return;
+                        e.preventDefault();
                     }
-                    e.preventDefault();
                 });
 
                 $(document).keyup(function(e) {
-                    if(e.which == 37 || e.which == 39){
-                        $character.velocity.x = 0;
-                        e.preventDefault();
+                    if(inGame) {
+                        if (e.which == 68 || e.which == 39 || e.which == 65 || e.which == 37) {
+                            $character.velocity.x = 0;
+                            e.preventDefault();
+                        }
                     }
                 });
 
@@ -154,33 +170,42 @@
 
                     console.log($character.velocity.x);
 
+                    if(currentTop + $character.velocity.y + $character.height() > $gameScreen.height()){
+                        alert('You fell off the screen!');
+                        endGame();
+                        return;
+                    }
+
                     $character.css({
-                        top: currentTop + $character.velocity.y,
-                        left: currentLeft + $character.velocity.x
+                        top: currentTop + $character.velocity.y
                     });
 
+                    if(currentLeft + $character.velocity.x > 0 && currentLeft + $character.velocity.x + $character.width() < $gameScreen.width()){
+                        $character.css({
+                            left: currentLeft + $character.velocity.x
+                        })
+                    }
+
                     $platforms.each(function(){
-                       if(overlaps($character, $(this))){
-                           $character.css({
-                               top: $character.offset().top - $character.velocity.y
-                           });
+                        if(overlaps($character, $(this))){
+                            $character.css({
+                                top: currentTop - $character.velocity.y
+                            });
 
-                           $character.velocity.y = -terminalVelocity;
+                            if($character.velocity.y > 0){
+                                $character.velocity.y = -terminalVelocity;
+                            } else {
+                                $character.velocity.y = 0;
+                            }
 
-                           return false;
-                       }
+                            return false;
+                        }
                     });
                 }, 16);
             });
 
             $('#stop-button').on('click', function(){
-                clearInterval(gameInterval);
-                $gameScreen.html(currentHTML);
-                currentHTML = '';
-
-                $(this).hide();
-                $('#play-button').show();
-                $('textarea').attr("disabled", false);
+                endGame();
             });
         });
     </script>
