@@ -61,12 +61,6 @@
                 $('#stylesheet').html($(this).val());
             });
 
-            $(document).delegate("#submit-add", 'click', function(e){
-                e.preventDefault();
-                currentSelected = '';
-                $("#add-new-form").remove();
-            });
-
             function resize() {
                 $('section').outerHeight($(window).height());
             }
