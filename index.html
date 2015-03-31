@@ -188,14 +188,16 @@
 
                     $platforms.each(function(){
                         if(overlaps($character, $(this))){
-                            $character.css({
-                                top: currentTop - $character.velocity.y
-                            });
-
                             if($character.velocity.y > 0){
                                 $character.velocity.y = -terminalVelocity;
+                                $character.css({
+                                    top: parseFloat($(this).css('top')) - $character.height()
+                                });
                             } else {
                                 $character.velocity.y = 0;
+                                $character.css({
+                                    top: parseFloat($(this).css('top')) + $(this).height()
+                                });
                             }
 
                             return false;
