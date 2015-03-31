@@ -92,15 +92,6 @@
             })();
 
             $('#play-button').on('click', function(){
-
-                currentHTML = $gameScreen.html();
-
-                $('#play-button').hide();
-                $('#stop-button').show();
-
-                var gravity = 20;
-                var terminalVelocity = 20;
-                var $platforms = $gameScreen.find(".platform");
                 var $character = $gameScreen.find("#character");
 
                 if($character.length == 0){
@@ -108,8 +99,40 @@
                     return;
                 }
 
-                $character.velocity = {x:0,y:0};
+                $('textarea').attr("disabled", true);
 
+                currentHTML = $gameScreen.html();
+
+                $('#play-button').hide();
+                $('#stop-button').show();
+
+                var gravity = 20;
+                var terminalVelocity = 12.5;
+                var $platforms = $gameScreen.find(".platform");
+
+                $character.velocity = {x:0,y:terminalVelocity};
+
+                $(document).keydown(function(e) {
+                    switch(e.which) {
+                        case 37: // left
+                                $character.velocity.x = -5;
+                            break;
+
+                        case 39: // right
+                                $character.velocity.x = 5;
+                            break;
+
+                        default: return;
+                    }
+                    e.preventDefault();
+                });
+
+                $(document).keyup(function(e) {
+                    if(e.which == 37 || e.which == 39){
+                        $character.velocity.x = 0;
+                        e.preventDefault();
+                    }
+                });
 
                 var curTime = (new Date()).getTime();
                 var prevTime;
@@ -123,8 +146,29 @@
                     if($character.velocity.y + (gravity * deltaTime/1000) <= terminalVelocity )
                         $character.velocity.y = $character.velocity.y + (gravity * deltaTime/1000);
 
+                    var currentTop = parseFloat($character.css('top'));
+                    var currentLeft = parseFloat($character.css('left'));
+
+                    if(isNaN(currentTop)) currentTop = 0;
+                    if(isNaN(currentLeft)) currentLeft = 0;
+
+                    console.log($character.velocity.x);
+
                     $character.css({
-                        top: $character.offset().top + $character.velocity.y,
+                        top: currentTop + $character.velocity.y,
+                        left: currentLeft + $character.velocity.x
+                    });
+
+                    $platforms.each(function(){
+                       if(overlaps($character, $(this))){
+                           $character.css({
+                               top: $character.offset().top - $character.velocity.y
+                           });
+
+                           $character.velocity.y = -terminalVelocity;
+
+                           return false;
+                       }
                     });
                 }, 16);
             });
@@ -136,6 +180,7 @@
 
                 $(this).hide();
                 $('#play-button').show();
+                $('textarea').attr("disabled", false);
             });
         });
     </script>
