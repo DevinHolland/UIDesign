@@ -68,6 +68,29 @@
             resize();
             $(window).resize(resize);
 
+            var overlaps = (function () {
+                function getPositions( elem ) {
+                    var pos, width, height;
+                    pos = $( elem ).position();
+                    width = $( elem ).width();
+                    height = $( elem ).height();
+                    return [ [ pos.left, pos.left + width ], [ pos.top, pos.top + height ] ];
+                }
+
+                function comparePositions( p1, p2 ) {
+                    var r1, r2;
+                    r1 = p1[0] < p2[0] ? p1 : p2;
+                    r2 = p1[0] < p2[0] ? p2 : p1;
+                    return r1[1] > r2[0] || r1[0] === r2[0];
+                }
+
+                return function ( a, b ) {
+                    var pos1 = getPositions( a ),
+                            pos2 = getPositions( b );
+                    return comparePositions( pos1[0], pos2[0] ) && comparePositions( pos1[1], pos2[1] );
+                };
+            })();
+
             $('#play-button').on('click', function(){
 
                 currentHTML = $gameScreen.html();
@@ -79,24 +102,13 @@
                 var terminalVelocity = 20;
                 var $platforms = $gameScreen.find(".platform");
                 var $character = $gameScreen.find("#character");
-                console.log($character);
 
-                var platforms = [];
                 if($character.length == 0){
                     alert("Character required.");
                     return;
                 }
 
                 $character.velocity = {x:0,y:0};
-
-                $platforms.each(function(){
-                    platforms.push({
-                        height: $(this).height(),
-                        width: $(this).width(),
-                        top: $(this).offset().top,
-                        left: $(this).offset().left
-                    })
-                });
 
 
                 var curTime = (new Date()).getTime();
@@ -111,7 +123,6 @@
                     if($character.velocity.y + (gravity * deltaTime/1000) <= terminalVelocity )
                         $character.velocity.y = $character.velocity.y + (gravity * deltaTime/1000);
 
-                    console.log($character.velocity.y);
                     $character.css({
                         top: $character.offset().top + $character.velocity.y,
                     });
