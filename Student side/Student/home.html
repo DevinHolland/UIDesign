@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Web TA- Home</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+        
+        <script>
+            function newRow() {
+                var table = document.getElementById("table_levels");
+                var row = table.insertRow(1);         
+                
+                var i;
+                for (i = 0; i < 4; i++) {
+                    row.insertCell(i);
+                }               
+                               
+                var date = new Date();
+                
+                row.cells[1].innerHTML = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+                row.cells[2].innerHTML = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + "    " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+                row.cells[3].innerHTML = "<button class=\"btn btn-primary\" onclick=deleteLevel(this)>Delete</button>   " +
+                                         "<button class=\"btn btn-primary\" onclick=cloneLevel(this)>Clone Level</button>   " +
+                                         "<button id=\"share_btn" + row.rowIndex + "\" class=\"btn btn-primary\" onclick=share(this)>Share</button>";               
+               
+                return row;
+            }
+            
+            function addLevel() {
+                var ret = prompt("Level Name:");                
+                if (ret == "") {
+                    return;
+                }
+                
+                var row = newRow();
+                
+                row.cells[0].innerHTML = "<a href=\"../Design/index.html\">" + ret + "</a>";
+            }
+            
+            function deleteLevel(row) {
+                var index = row.parentNode.parentNode.rowIndex;
+                document.getElementById("table_levels").deleteRow(index);
+            }
+            
+            function cloneLevel(row) {
+                //var rIndex = row.parentNode.parentNode.rowIndex;
+                //var lvlname = document.getElementById("table_levels").rows[rIndex].cells[0].innerHTML;                
+                var ret = prompt("Cloned Level Name:");                
+                if (ret == "") {
+                    return;
+                }
+                
+                row = newRow();               
+                
+                row.cells[0].innerHTML = "<a href=\"../Design/index.html\">" + ret + "</a>";
+            }
+            
+            function share(obj) {
+                var text = obj.textContent;
+ 
+                if (text == "Share") {
+                    obj.className = "btn btn-success";
+                    obj.textContent = "Shared";
+                }
+                else {
+                    obj.className = "btn btn-primary";
+                    obj.textContent = "Share"; 
+                }
+            }
+        </script>
+        
+    </head>
+    <body>  
+        <div class="container">
+            <h1 align="center">Welcome to Web TA</h1>
+            <br/>
+            <br/>
+        
+            <button class="btn btn-primary" onclick="addLevel()">New Level</button>
+            <a class="btn btn-primary" href="social.html">Social</a>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+            <br/>
+            <br/>
+            
+            <table id="table_levels" class="table table-striped">
+                <tr>
+                    <th>Level Name</th>      
+                    <th>Date of Creation</th>
+                    <th>Last modified on...</th>
+                    <th>Actions</th>
+                </tr>                              
+            </table>       
+            
+        </div>
+    </body>
+</html>

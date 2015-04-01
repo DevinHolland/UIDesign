@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Web TA - Social</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">  
+        
+        <script>
+            function liked(label, img) {
+                var obj = document.getElementById(label).innerHTML;                
+                var src = img.src.split("/");
+                src = src[src.length - 1];
+                
+                obj = parseInt(obj);
+                
+                if (src == "no-like.jpg") {
+                    document.getElementById(label).innerHTML = obj + 1;
+                    img.src = "images/like.png";
+                }           
+                else {
+                   document.getElementById(label).innerHTML = obj - 1;
+                   img.src = "images/no-like.jpg"; 
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            
+            <h1 align="center">Web TA - Social</h1>          
+            <br/>
+            <h3>See what and how people are doing...</h3>
+            <br/>
+
+            <form class="form-inline">
+                <label for="orderby">Order by </label>
+                <select id="orderby" class="form-control">
+                    <option>Popularity</option>
+                    <option>Recent</option>
+                </select>
+            </form>
+            <br/>
+            
+            <table id="levels" class="table table-striped">
+                <tr>
+                    <th>Level Name</th>      
+                    <th>Author</th>
+                    <th>Date of Creation</th>
+                    <th>Last modified on...</th>
+                    <th>Actions</th>
+                </tr>                              
+                <tr>
+                    <td>Dark Knight Castle</td>
+                    <td>Ben</td>
+                    <td>02/14/2015</td>
+                    <td>03/01/2015</td>
+                    <td>
+                        <a class="btn btn-primary" href="social/index.html">Play</a>
+                        <a class="btn btn-primary" href="#">Send Feedback</a>
+                        <img height="40" width="40" class="img-thumbnail" src="images/no-like.jpg" onclick="liked('lvl1', this)"/> <label id="lvl1">52</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Snake Attacks</td>
+                    <td>Jordan</td>
+                    <td>11/29/2014</td>
+                    <td>12/03/2014</td>
+                    <td>
+                        <a class="btn btn-primary" href="social/index.html">Play</a>
+                        <a class="btn btn-primary" href="#">Send Feedback</a>
+                        <img height="40" width="40" class="img-thumbnail" src="images/no-like.jpg" onclick="liked('lvl2', this)"/> <label id="lvl2">49</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Bump</td>
+                    <td>Frederick</td>
+                    <td>01/20/2015</td>
+                    <td>02/07/2015</td>
+                    <td>
+                        <a class="btn btn-primary" href="social/index.html">Play</a>
+                        <a class="btn btn-primary" href="#">Send Feedback</a>
+                        <img height="40" width="40" class="img-thumbnail" src="images/no-like.jpg" onclick="liked('lvl3', this)"/> <label id="lvl3">37</label>
+                    </td>
+                </tr>
+            </table>                  
+            
+            <a href="home.html">Home</a>
+        </div>
+        
+    </body>
+</html>
