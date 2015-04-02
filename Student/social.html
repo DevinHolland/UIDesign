@@ -10,7 +10,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">  
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap/css/bootstrap.css">
         
         <script>
             function liked(label, img) {
@@ -22,11 +22,11 @@ and open the template in the editor.
                 
                 if (src == "no-like.jpg") {
                     document.getElementById(label).innerHTML = obj + 1;
-                    img.src = "images/like.png";
+                    img.src = "../img/like.png";
                 }           
                 else {
                    document.getElementById(label).innerHTML = obj - 1;
-                   img.src = "images/no-like.jpg"; 
+                   img.src = "../img/no-like.jpg";
                 }
             }
         </script>
@@ -64,7 +64,7 @@ and open the template in the editor.
                     <td>
                         <a class="btn btn-primary" href="social/index.html">Play</a>
                         <a class="btn btn-primary" href="#">Send Feedback</a>
-                        <img height="40" width="40" class="img-thumbnail" src="images/no-like.jpg" onclick="liked('lvl1', this)"/> <label id="lvl1">52</label>
+                        <img height="40" width="40" class="img-thumbnail" src="../img/no-like.jpg" onclick="liked('lvl1', this)"/> <label id="lvl1">52</label>
                     </td>
                 </tr>
                 <tr>
@@ -75,7 +75,7 @@ and open the template in the editor.
                     <td>
                         <a class="btn btn-primary" href="social/index.html">Play</a>
                         <a class="btn btn-primary" href="#">Send Feedback</a>
-                        <img height="40" width="40" class="img-thumbnail" src="images/no-like.jpg" onclick="liked('lvl2', this)"/> <label id="lvl2">49</label>
+                        <img height="40" width="40" class="img-thumbnail" src="../img/no-like.jpg" onclick="liked('lvl2', this)"/> <label id="lvl2">49</label>
                     </td>
                 </tr>
                 <tr>
@@ -86,7 +86,7 @@ and open the template in the editor.
                     <td>
                         <a class="btn btn-primary" href="social/index.html">Play</a>
                         <a class="btn btn-primary" href="#">Send Feedback</a>
-                        <img height="40" width="40" class="img-thumbnail" src="images/no-like.jpg" onclick="liked('lvl3', this)"/> <label id="lvl3">37</label>
+                        <img height="40" width="40" class="img-thumbnail" src="../img/no-like.jpg" onclick="liked('lvl3', this)"/> <label id="lvl3">37</label>
                     </td>
                 </tr>
             </table>                  

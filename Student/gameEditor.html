@@ -3,34 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Prototype</title>
-    <link rel="stylesheet" href="style.css" />
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../css/slidebars.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
 <style id="stylesheet">
 
 </style>
+    <div id="sb-site">
+        <section id="editor">
+            <form id="add-new-form-template">
+                <label for="html">HTML</label>
+                <textarea autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="html"></textarea>
 
-    <section id="editor">
-        <form id="add-new-form-template">
-            <label for="html">HTML</label>
-            <textarea autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="html"></textarea>
+                <label for="css">CSS</label>
+                <textarea autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="css"></textarea>
+            </form>
 
-            <label for="css">CSS</label>
-            <textarea autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="css"></textarea>
-        </form>
+            <div id="play">
+                <button id="play-button" class="btn btn-primary">Play!</button>
+                <button id="stop-button" class="btn btn-primary">Stop</button>
+                <button style="float: right;" class="sb-toggle-right btn btn-primary">Help</button>
+            </div>
+        </section>
 
-        <div id="play">
-            <button id="play-button">Play!</button>
-            <button id="stop-button">Stop</button>
+        <section id="game-screen">
+        </section>
+    </div>
+
+    <div class="sb-slidebar sb-right sb-style-overlay">
+        <div id="useful-ids">
+
         </div>
-    </section>
-
-    <section id="game-screen">
-    </section>
-
+    </div>
+    <script src="../js/slidebars.min.js"></script>
     <script>
         $(function(){
+            $(document).ready(function() {
+                $.slidebars();
+            });
+
             var $gameScreen = $("#game-screen");
             var currentHTML = "";
             var gameInterval;
@@ -125,29 +140,16 @@
                 var terminalVelocity = 12.5;
                 var $platforms = $gameScreen.find(".platform");
 
+                var keysDown = [];
+
                 $character.velocity = {x:0,y:0};
 
                 $(document).keydown(function(e) {
-                    if(inGame) {
-                        if (e.which == 65 || e.which == 37) {
-                            $character.velocity.x = -5;
-                        } else if (e.which == 68 || e.which == 39) {
-                            $character.velocity.x = 5;
-                        } else {
-                            return;
-                        }
-
-                        e.preventDefault();
-                    }
+                    keysDown[e.which] = true;
                 });
 
                 $(document).keyup(function(e) {
-                    if(inGame) {
-                        if (e.which == 68 || e.which == 39 || e.which == 65 || e.which == 37) {
-                            $character.velocity.x = 0;
-                            e.preventDefault();
-                        }
-                    }
+                    keysDown[e.which] = false;
                 });
 
                 var curTime = (new Date()).getTime();
@@ -157,10 +159,30 @@
                 gameInterval = setInterval(function(){
                     prevTime = curTime;
                     curTime = Date.now();
-                    deltaTime = curTime - prevTime;
+                    deltaTime = (curTime - prevTime) / 1000;
 
-                    if($character.velocity.y + (gravity * deltaTime/1000) <= terminalVelocity )
-                        $character.velocity.y = $character.velocity.y + (gravity * deltaTime/1000);
+                    if($character.velocity.y + (gravity * deltaTime) <= terminalVelocity )
+                        $character.velocity.y += (gravity * deltaTime);
+
+                    if(keysDown[68] || keysDown[39]){
+                        $character.velocity.x = 5;
+                    } else if(keysDown[65] || keysDown[37]){
+                        $character.velocity.x = -5;
+                    } else if($character.velocity.x != 0){
+                        if($character.velocity.x > 0){
+                            $character.velocity.x -= 10 * deltaTime;
+                            if($character.velocity.x < 0){
+                                $character.velocity.x = 0;
+                            }
+                        } else {
+                            $character.velocity.x += 10 * deltaTime;
+                            if($character.velocity.x > 0){
+                                $character.velocity.x = 0;
+                            }
+                        }
+                    }
+
+                    console.log($character.velocity.x);
 
                     var currentTop = parseFloat($character.css('top'));
                     var currentLeft = parseFloat($character.css('left'));
@@ -168,10 +190,7 @@
                     if(isNaN(currentTop)) currentTop = 0;
                     if(isNaN(currentLeft)) currentLeft = 0;
 
-                    console.log($character.velocity.x);
-
                     if(currentTop + $character.velocity.y + $character.height() > $gameScreen.height()){
-                        alert('You fell off the screen!');
                         endGame();
                         return;
                     }
