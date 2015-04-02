@@ -27,7 +27,7 @@ and open the template in the editor.
                 row.cells[1].innerHTML = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
                 row.cells[2].innerHTML = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + "    " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
                 row.cells[3].innerHTML = "<button class=\"btn btn-primary\" onclick=deleteLevel(this)>Delete</button>   " +
-                                         "<button class=\"btn btn-primary\" onclick=cloneLevel(this)>Clone Level</button>   " +
+                                         "<button class=\"btn btn-primary\" onclick=duplicateLevel(this)>Duplicate Level</button>   " +
                                          "<button id=\"share_btn" + row.rowIndex + "\" class=\"btn btn-primary\" onclick=share(this)>Share</button>";               
                
                 return row;
@@ -49,10 +49,10 @@ and open the template in the editor.
                 document.getElementById("table_levels").deleteRow(index);
             }
             
-            function cloneLevel(row) {
+            function duplicateLevel(row) {
                 //var rIndex = row.parentNode.parentNode.rowIndex;
                 //var lvlname = document.getElementById("table_levels").rows[rIndex].cells[0].innerHTML;                
-                var ret = prompt("Cloned Level Name:");                
+                var ret = prompt("Duplicated Level Name:");                
                 if (ret == "") {
                     return;
                 }
@@ -93,7 +93,7 @@ and open the template in the editor.
                 <tr>
                     <th>Level Name</th>      
                     <th>Date of Creation</th>
-                    <th>Last modified on...</th>
+                    <th>Last Modified</th>
                     <th>Actions</th>
                 </tr>                              
             </table>       
