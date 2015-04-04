@@ -9,10 +9,10 @@ and open the template in the editor.
         <title>Web TA- Home</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+        
         <link rel="stylesheet" type="text/css" href="../css/bootstrap/css/bootstrap.css">
         
-        <script>
+        <script type="text/javascript">
             function newRow() {
                 var table = document.getElementById("table_levels");
                 var row = table.insertRow(1);         
@@ -26,7 +26,8 @@ and open the template in the editor.
                 
                 row.cells[1].innerHTML = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
                 row.cells[2].innerHTML = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + "    " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-                row.cells[3].innerHTML = "<button class=\"btn btn-primary\" onclick=deleteLevel(this)>Delete</button>   " +
+                row.cells[3].innerHTML = "<button class=\"btn btn-primary\" onclick=\"addLevel()\">New Level</button>   " +
+                                         "<button class=\"btn btn-primary\" onclick=deleteLevel(this)>Delete</button>   " +
                                          "<button class=\"btn btn-primary\" onclick=duplicateLevel(this)>Duplicate Level</button>   " +
                                          "<button id=\"share_btn" + row.rowIndex + "\" class=\"btn btn-primary\" onclick=share(this)>Share</button>";               
                
@@ -62,10 +63,10 @@ and open the template in the editor.
                 row.cells[0].innerHTML = "<a href=\"gameEditor.html\">" + ret + "</a>";
             }
             
-            function share(obj) {
-                var text = obj.textContent;
+            function share(obj) {                               
+                var text = obj.textContent;   
  
-                if (text == "Share") {
+                if (text == "Share") {                    
                     obj.className = "btn btn-success";
                     obj.textContent = "Shared";
                 }
@@ -74,28 +75,78 @@ and open the template in the editor.
                     obj.textContent = "Share"; 
                 }
             }
+            
+            function showAssignment(obj) {                 
+                var assignmentNo = obj.parentNode.parentNode.cells[0].innerText;                
+                window.location.href = "assignment.html?" + assignmentNo;
+            }
         </script>
         
     </head>
     <body>  
         <div class="container">
-            <h1 align="center">Welcome to Web TA</h1>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                  <!-- Brand and toggle get grouped for better mobile display -->
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Web TA</a>
+                  </div>
+
+                  <!-- Collect the nav links, forms, and other content for toggling -->
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                      <li class="active"><a href="#">Assignments <span class="sr-only">(current)</span></a></li>
+                      <li><a href="social.html">Social</a></li>
+                      <li><a href="">Messages <span class="badge">4</span></a></li>
+                    </ul>  
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="login.html">Logout</a></li>
+                    </ul>                    
+                  </div>
+                </div>
+            </nav>
+            
             <br/>
-            <br/>
-        
-            <button class="btn btn-primary" onclick="addLevel()">New Level</button>
-            <a class="btn btn-primary" href="social.html">Social</a>
-            <a class="btn btn-primary" href="login.html">Logout</a>
-            <br/>
+            <h2>Assignments</h2>    
             <br/>
             
             <table id="table_levels" class="table table-striped">
                 <tr>
-                    <th>Level Name</th>      
+                    <th>Assignment</th>      
                     <th>Date of Creation</th>
-                    <th>Last Modified</th>
+                    <th>Due Date</th>
+                    <th>Grade</th>
+                    <th>Status</th>
                     <th>Actions</th>
-                </tr>                              
+                </tr> 
+                <tr>
+                    <td><a href="#" onclick="showAssignment(this)">Assignment 1</a></td>
+                    <td>04/03/2015</td>
+                    <td>04/14/2015</td>
+                    <td></td>
+                    <td>Pendent</td>
+                    <td>                        
+                        <a class="btn btn-primary" href="gameEditor.html">Write a solution</a>
+                        <button id="share_btn" class="btn btn-primary" onclick=share(this)>Share</button>                        
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="#" onclick="showAssignment(this)">Assignment 2</a></td>
+                    <td>04/03/2015</td>
+                    <td>04/14/2015</td>
+                    <td></td>
+                    <td>Pendent</td>
+                    <td>                        
+                        <a class="btn btn-primary" href="gameEditor.html">Write a solution</a>
+                        <button id="share_btn" class="btn btn-primary" onclick=share(this)>Share</button> 
+                    </td>
+                </tr>
             </table>       
             
         </div>
