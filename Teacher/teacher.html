@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html ng-app="Teacher">
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="teacher.css">
+    <title></title>
+</head>
+<body ng-controller="MainCtrl as main">
+<nav role="navigation" class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">WebTa</a>
+
+            <p class="navbar-text">Hello Mrs. Lawson</p>
+        </div>
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Setting</a></li>
+                <li><a href="#">Sign Out</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="col-md-2"></div>
+<div class="col-md-8">
+    <div>
+        <ol class="breadcrumb">
+            <li><a href="#">Classes</a></li>
+            <li><a href="#">Spring 2014</a></li>
+            <li class="active">Section 2C</li>
+        </ol>
+    </div>
+    <div>
+        <tabset>
+            <tab heading="Assignments">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>Assignment</th>
+                        <th>Due Date</th>
+                        <th>Points</th>
+                        <th>Submissions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="assignment in assignments">
+                            <td>{{assignment.title}}</td>
+                            <td>{{assignment.due}}</td>
+                            <td>{{assignment.points}}</td>
+                            <td><a href="{{assignment.submission}}">Submission</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">Create Assignment</button>
+            </tab>
+            <tab heading="Email">
+                <img src="../img/email.png" class="img-responsive" alt="Responsive image">
+            </tab>
+            <tab heading="Discussions">Disucssion To do</tab>
+        </tabset>
+    </div>
+</div>
+<div class="col-md-2"></div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form">
+                    <div class="form-group">
+                        <label for="assignment">Assignment</label>
+                        <input type="text" class="form-control" id="assignment" ng-model = "newAssignment.title" placeholder="Assignment 1">
+                    </div>
+                    <div class="form-group">
+                        <label for="due">Due Date</label>
+                        <input type="test" class="form-control" id="due"  ng-model = "newAssignment.due" placeholder="1/4/2015">
+                    </div>
+                    <div class="form-group">
+                        <label for="points">Points</label>
+                        <input type="text" class="form-control" id="points" ng-model = "newAssignment.points" placeholder="10">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary"  data-dismiss="modal" ng-click="createAssignment()">Create Assignment</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<script src=" https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.1/ui-bootstrap-tpls.min.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
