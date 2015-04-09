@@ -32,34 +32,30 @@ and open the template in the editor.
         </script>
     </head>
     <body>
-        <div class="container">
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                  <!-- Brand and toggle get grouped for better mobile display -->
-                  <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
+        <nav role="navigation" class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Web TA</a>
-                  </div>
-
-                  <!-- Collect the nav links, forms, and other content for toggling -->
-                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <a href="#" class="navbar-brand">WebTa</a>
                     <ul class="nav navbar-nav">
-                      <li><a href="home.html">Assignments <span class="sr-only">(current)</span></a></li>
-                      <li class="active"><a href="social.html">Social</a></li>
-                      <li><a href="">Messages <span class="badge">4</span></a></li>
-                    </ul>  
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="">Logout</a></li>
-                    </ul>                    
-                  </div>
+                        <li><a href="home.html">Assignments <span class="sr-only">(current)</span></a></li>
+                        <li class="active"><a href="social.html">Social</a></li>
+                    </ul> 
+                    
                 </div>
-            </nav>
-            
+                <div id="navbarCollapse" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">                                             
+                        <li><a href="login.html">Sign Out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
             <br/>
             <h3>See what and how people are doing...</h3>
             <br/>
