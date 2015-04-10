@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="../Teacher/teacher.css">
-    <title>Assignments</title>
+    <title>Workspace</title>
     
     <script>
         function showAssignment(obj) {                 
@@ -13,15 +13,13 @@
         }
         
         function share(obj) {                               
-            var text = obj.textContent;   
+            var text = obj.className;   
 
-            if (text == "Share") {                    
-                //obj.className = "btn btn-success";
-                obj.textContent = "Shared";
+            if (text == "glyphicon glyphicon-share") {                    
+                obj.className = "glyphicon glyphicon-ok";                
             }
             else {
-                //obj.className = "btn btn-primary";
-                obj.textContent = "Share"; 
+                obj.className = "glyphicon glyphicon-share";      
             }
         }
         
@@ -39,9 +37,9 @@
 
             row.cells[1].innerHTML = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
             row.cells[2].innerHTML = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + "    " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-            row.cells[3].innerHTML = "<a href=\"#\" onclick=\"deleteLevel(this)\">Delete</a> &nbsp &nbsp" +
-                                     "<a href=\"#\" data-toggle=\"modal\" data-target=\"#myModal\">Duplicate</a> &nbsp &nbsp" +
-                                     "<a href=\"#\" id=\"share_btn" + row.rowIndex + "\" onclick=\"share(this)\">Share</a>";               
+            row.cells[3].innerHTML = "<a href=\"#\" onclick=\"deleteLevel(this)\" data-tooltip=\"Delete\" class=\"glyphicon glyphicon-trash\"></a> &nbsp &nbsp" +
+                                     "<a href=\"#\" data-toggle=\"modal\" data-target=\"#myModal\" data-tooltip=\"Copy to playground\" class=\"glyphicon glyphicon-duplicate\"></a> &nbsp &nbsp" +
+                                     "<a href=\"#\" id=\"share_btn" + row.rowIndex + "\" onclick=\"share(this)\" data-tooltip=\"Share\" class=\"glyphicon glyphicon-share\"></a>";               
 
             return row;
         }
@@ -71,7 +69,7 @@
             </button>
             <a href="#" class="navbar-brand">WebTa</a>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Assignments <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="#">Workspace <span class="sr-only">(current)</span></a></li>
                 <li><a href="social.html">Social</a></li>               
             </ul> 
 
@@ -88,7 +86,7 @@
 <div class="col-md-8">
     <div>
         <ol class="breadcrumb">
-            <li><a href="#">Assignments</a></li>
+            <li><h4>Assignments</h4></li>
         </ol>
     </div>
     <div>
@@ -101,7 +99,7 @@
                         <th>Due Date</th>
                         <th>Points</th>
                         <th>Grade</th>
-                        <th class="col-md-3">Actions</th>
+                        <th class="col-md-2">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -111,9 +109,9 @@
                             <td>10</td>
                             <td></td>
                             <td>
-                                <a href="gameEditor.html">Write a solution</a>&nbsp &nbsp
-                                <a href="#" data-toggle="modal" data-target="#myModal">Copy</a>&nbsp &nbsp
-                                <a id="share_btn" href="#" onclick="share(this)">Share</a> 
+                                <a href="gameEditor.html" data-tooltip="Write a solution" class="glyphicon glyphicon-edit"></a>&nbsp &nbsp
+                                <a href="#" data-toggle="modal" data-target="#myModal" data-tooltip="Copy to playground" class="glyphicon glyphicon-duplicate"></a>&nbsp &nbsp
+                                <a id="share_btn" href="#" onclick="share(this)" data-tooltip="Share" class="glyphicon glyphicon-share"></a> 
                             </td>
                         </tr>
                         <tr>
@@ -122,9 +120,9 @@
                             <td>25</td>
                             <td></td>
                             <td>
-                                <a href="gameEditor.html">Write a solution</a>&nbsp &nbsp
-                                <a href="#" data-toggle="modal" data-target="#myModal">Copy</a>&nbsp &nbsp
-                                <a id="share_btn" href="#" onclick="share(this)">Share</a> 
+                                <a href="gameEditor.html" data-tooltip="Write a solution" data-tooltip="Write a solution" class="glyphicon glyphicon-edit"></a>&nbsp &nbsp
+                                <a href="#" data-toggle="modal" data-target="#myModal" data-tooltip="Copy to playground" class="glyphicon glyphicon-duplicate"></a>&nbsp &nbsp
+                                <a id="share_btn" href="#" onclick="share(this)" data-tooltip="Share" class="glyphicon glyphicon-share"></a> 
                             </td>
                         </tr>
                         <tr>
@@ -133,9 +131,9 @@
                             <td>25</td>
                             <td></td>
                             <td>
-                                <a href="gameEditor.html">Write a solution</a>&nbsp &nbsp
-                                <a href="#" data-toggle="modal" data-target="#myModal">Copy</a>&nbsp &nbsp
-                                <a id="share_btn" href="#" onclick="share(this)">Share</a> 
+                                <a href="gameEditor.html" data-tooltip="Write a solution" data-tooltip="Write a solution" class="glyphicon glyphicon-edit"></a>&nbsp &nbsp
+                                <a href="#" data-toggle="modal" data-target="#myModal" data-tooltip="Copy to playground" class="glyphicon glyphicon-duplicate"></a>&nbsp &nbsp
+                                <a id="share_btn" href="#" onclick="share(this)" data-tooltip="Share" class="glyphicon glyphicon-share"></a> 
                             </td>
                         </tr>
                         <tr>
@@ -144,28 +142,25 @@
                             <td>50</td>
                             <td></td>
                             <td>
-                                <a href="gameEditor.html">Write a solution</a>&nbsp &nbsp
-                                <a href="#" data-toggle="modal" data-target="#myModal">Copy</a>&nbsp &nbsp
-                                <a id="share_btn" href="#" onclick="share(this)">Share</a> 
+                                <a href="gameEditor.html" data-tooltip="Write a solution" data-tooltip="Write a solution" class="glyphicon glyphicon-edit"></a>&nbsp &nbsp
+                                <a href="#" data-toggle="modal" data-target="#myModal" data-tooltip="Copy to playground" class="glyphicon glyphicon-duplicate"></a>&nbsp &nbsp
+                                <a id="share_btn" href="#" onclick="share(this)" data-tooltip="Share" class="glyphicon glyphicon-share"></a> 
                             </td>
                         </tr>
                     </tbody>
                 </table>                
             </tab>
-            <tab heading="Email">
-                <img src="../img/email.png" class="img-responsive" alt="Responsive image">
-            </tab>
-            <tab heading="Discussions">Disucssion To do</tab>
+            <tab heading="Discussions">Discussion To do</tab>
         </tabset>
         
         <br/> 
         <br/>
         <div>
             <ol class="breadcrumb">
-                <li><a href="#">Playground</a></li>
+                <li><h4>Playground</h4></li>
             </ol>
         </div>
-        <button class="btn btn-success pull-left" data-toggle="modal" data-target="#myModal">Create a Level</button>
+        <a href="gameEditor.html" class="btn btn-success pull-left">Create a Level</a>
         <br/>
         <br/>
         <table class="table table-bordered table-hover" id="playground_table">
@@ -187,7 +182,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <h4 class="modal-title" id="myModalLabel">Copying to playground</h4>
             </div>
             <div class="modal-body">
                 <form class="form"> 
