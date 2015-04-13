@@ -32,7 +32,7 @@
                 </button>
                 <a href="#" class="navbar-brand">WebTa</a>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Workspace <span class="sr-only">(current)</span></a></li>
+                    <li><a href="home.html">Workspace</a></li>
                     <li><a href="social.html">Social</a></li>
                 </ul>
 
@@ -70,7 +70,33 @@
 </div>
 
 <div class="sb-slidebar sb-right sb-style-overlay">
+    <h2>Tips</h2>
+    <div id="general-info">
+        <h4>General</h4>
+        Every game must have a <span class="code">#character</span>.<br /><br />
+        Add platforms for the <span class="code">#character</span> to jump on with <span class="code">.platform</span>.<br /><br />
+        Any <span class="code">.platform</span> can be left as is, be a <span class="code">.spring</span> to give an extra boost, or be a <span class="code">.trap</span> to give a little challenge!<br /><br />
+        Make sure to have a <span class="code">#goal</span> so players of your level can win.<br /><br />
+        Use <span class="code">#game-screen</span> to modify the background of the game.<br /><br />
+    </div>
 
+    <div id="availableIDs">
+        <h4>Available IDs</h4>
+        <ul class="code">
+            <li>#game-screen</li>
+            <li>#character</li>
+            <li>#goal</li>
+        </ul>
+    </div>
+
+    <div id="availableClasses">
+        <h4>Available Classes</h4>
+        <ul class="code">
+            <li>.platform</li>
+            <li>.spring</li>
+            <li>.trap</li>
+        </ul>
+    </div>
 </div>
 <div class="modal fade" id="characterRequired" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
