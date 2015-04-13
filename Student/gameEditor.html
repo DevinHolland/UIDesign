@@ -82,6 +82,15 @@
                 $('textarea').height($('#editor').height()/3);
             }
 
+            var keysDown = [];
+            $(document).keydown(function(e) {
+                keysDown[e.which] = true;
+            });
+
+            $(document).keyup(function(e) {
+                keysDown[e.which] = false;
+            });
+
             resize();
             $(window).resize(resize);
 
@@ -141,17 +150,9 @@
                 var terminalVelocity = 12.5;
                 var $platforms = $gameScreen.find(".platform");
 
-                var keysDown = [];
-
                 $character.velocity = {x:0,y:0};
 
-                $(document).keydown(function(e) {
-                    keysDown[e.which] = true;
-                });
 
-                $(document).keyup(function(e) {
-                    keysDown[e.which] = false;
-                });
 
                 var curTime = (new Date()).getTime();
                 var prevTime;
@@ -209,7 +210,10 @@
                     $platforms.each(function(){
                         if(overlaps($character, $(this))){
                             if($character.velocity.y > 0){
-                                $character.velocity.y = -terminalVelocity;
+                                if($(this).hasClass('spring'))
+                                    $character.velocity.y = -terminalVelocity * 1.25;
+                                else
+                                    $character.velocity.y = -terminalVelocity;
                                 $character.css({
                                     top: parseFloat($(this).css('top')) - $character.height()
                                 });
