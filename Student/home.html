@@ -16,7 +16,7 @@
             var text = obj.className;   
 
             if (text == "glyphicon glyphicon-share") {                    
-                obj.className = "glyphicon glyphicon-ok";                
+                obj.className = "glyphicon glyphicon-ok";  
             }
             else {
                 obj.className = "glyphicon glyphicon-share";      
@@ -54,6 +54,11 @@
         function deleteLevel(row) {
             var index = row.parentNode.parentNode.rowIndex;
             document.getElementById("playground_table").deleteRow(index);
+        }
+        
+        function goToDiscussion(obj) {
+            var topic = obj.parentNode.parentNode.cells[0].innerText;             
+            window.location.href = "discussionTopic.html?" + topic;    
         }
     </script>
 </head>
@@ -150,7 +155,40 @@
                     </tbody>
                 </table>                
             </tab>
-            <tab heading="Discussions">Discussion To do</tab>
+            <tab heading="Discussions">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th class="col-md-6">Topic</th>
+                            <th class="col-md-3">Author</th>
+                            <th class="col-md-3">Date of Creation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="" onclick="goToDiscussion(this)">Nested structures</a></td>
+                            <td>Joey</td>
+                            <td>04/13/2015</td>
+                        </tr>
+                        <tr>
+                            <td><a href="" onclick="goToDiscussion(this)">Nested structures</a></td>
+                            <td>Joey</td>
+                            <td>04/13/2015</td>
+                        </tr>
+                        <tr>
+                            <td><a href="" onclick="goToDiscussion(this)">Nested structures</a></td>
+                            <td>Joey</td>
+                            <td>04/13/2015</td>
+                        </tr>
+                        <tr>
+                            <td><a href="" onclick="goToDiscussion(this)">Nested structures</a></td>
+                            <td>Joey</td>
+                            <td>04/13/2015</td>
+                        </tr>                   
+                    </tbody>
+                </table>
+                <button class="btn btn-success">New Topic</button>
+            </tab>
         </tabset>
         
         <br/> 

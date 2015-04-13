@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Web TA - Assignment #</title>
+        <title>Web TA - Discussion Board</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../css/bootstrap/css/bootstrap.css">
@@ -41,7 +41,7 @@ and open the template in the editor.
 
             <div>
                 <ol class="breadcrumb">
-                    <li><a href="home.html">Workspace</a> / <label id="assignmentNo"></label></li>
+                    <li><a href="home.html">Workspace</a> / <strong>Discussion Board</strong> / <label id="topic"></label></li>
                 </ol>
             </div>                      
 
@@ -54,28 +54,48 @@ and open the template in the editor.
                 var string = window.location.href;
                 var getit = new Array();
                 getit = string.split("?");
-                document.getElementById("assignmentNo").textContent = unescape(getit[1]);
-                document.getElementById("title").textContent = unescape(getit[1]);
+                document.getElementById("topic").textContent = unescape(getit[1]);                                          
             </script>
 
             <div class="panel panel-default">
-                <div class="panel-heading"><strong>Description</strong></div>                
-                <div class="panel-body">      
+                <div class="panel-heading"><strong>Topic</strong></div>                
+                <div class="panel-body">  
+                    <form>
+                        <div class="form-group">
+                            <textarea class="form-control" id="topicDescription">
+Fake Fake Fake
+                            </textarea> 
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="panel panel-default">
-                <div class="panel-heading"><strong>Points Available</strong></div>                
-                <div class="panel-body"></div>
+                <div class="panel-heading">Sarah's Comment</div>                 
+                <div class="panel-body">
+                    <form>
+                        <div class="form-group">
+                            <textarea class="form-control" id="topicDescription">
+Fake Fake Fake
+                            </textarea> 
+                        </div>
+                    </form>
+                </div>
             </div>
+            
             <div class="panel panel-default">
-                <div class="panel-heading"><strong>Due Date</strong></div>                
-                <div class="panel-body"></div>
-            </div>                
-            <div class="panel panel-default">
-                <div class="panel-heading"><strong>Grading Criteria</strong></div>                
-                <div class="panel-body"></div>
+                <div class="panel-heading">Connor's Comment</div>                
+                <div class="panel-body">
+                    <form>
+                        <div class="form-group">
+                            <textarea class="form-control" id="topicDescription">
+Fake Fake Fake
+                            </textarea> 
+                        </div>
+                    </form>                    
+                </div>
             </div>
-            <a class="btn btn-primary" href="gameEditor.html">Write a solution</a>
+
+            <a class="btn btn-primary" href="gameEditor.html">Write a comment</a>
 
         </div>
     </body>
