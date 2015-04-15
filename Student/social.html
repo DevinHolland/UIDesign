@@ -5,242 +5,243 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <head>
-        <title>Social</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <link rel="stylesheet" type="text/css" href="../css/bootstrap/css/bootstrap.css">
-        
-        <script>
-            function liked(label, img) {
-                var obj = document.getElementById(label).innerHTML;                
-                var src = img.src.split("/");
-                src = src[src.length - 1];
-                
-                obj = parseInt(obj);
-                
-                if (src == "no-like.jpg") {
-                    document.getElementById(label).innerHTML = obj + 1;
-                    img.src = "../img/like.png";
-                }           
-                else {
-                   document.getElementById(label).innerHTML = obj - 1;
-                   img.src = "../img/no-like.jpg";
-                }
+<head>
+    <title>Social</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap/css/bootstrap.css">
+
+    <script>
+        function liked(label, img) {
+            var obj = document.getElementById(label).innerHTML;
+            var src = img.src.split("/");
+            src = src[src.length - 1];
+
+            obj = parseInt(obj);
+
+            if (src == "no-like.jpg") {
+                document.getElementById(label).innerHTML = obj + 1;
+                img.src = "../img/like.png";
             }
-        </script>
-    </head>
-    <body>
-        <nav role="navigation" class="navbar navbar-default">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="#" class="navbar-brand">WebTa</a>
-                    <ul class="nav navbar-nav">
-                        <li><a href="home.html">Workspace <span class="sr-only">(current)</span></a></li>
-                        <li class="active"><a href="social.html">Social</a></li>
-                    </ul> 
-                    
-                </div>
-                <div id="navbarCollapse" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">                                             
-                        <li><a href="login.html">Sign Out</a></li>
-                    </ul>
-                </div>
+            else {
+                document.getElementById(label).innerHTML = obj - 1;
+                img.src = "../img/no-like.jpg";
+            }
+        }
+    </script>
+</head>
+<body>
+<nav role="navigation" class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">WebTa</a>
+            <ul class="nav navbar-nav">
+                <li><a href="home.html">Workspace <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="#">Social</a></li>
+            </ul>
+
+        </div>
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <p class="navbar-text">Hello Joey</p>
+                <li><a href="login.html">Sign Out</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="col-md-2"></div>
+<div class="col-md-8">
+    <div>
+        <ol class="breadcrumb">
+            <li><h4>Social</h4></li>
+        </ol>
+
+        <h4>Sorted by the most &nbsp
+            <select>
+                <option>Popular</option>
+                <option>Recent</option>
+            </select>
+        </h4>
+
+        <div class="media">
+            <div class="media-left">
+                <a href="social/index.html">
+                    <img class="media-object" src="../img/social/levels/level1.jpg" alt="...">
+                </a>
             </div>
-        </nav>
-        
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-            <div>
-                <ol class="breadcrumb">
-                    <li><h4>Social</h4></li>
-                </ol>
-                
-                <h4>Sorted by the most &nbsp
-                    <select>
-                        <option>Popular</option>
-                        <option>Recent</option>
-                    </select>
-                </h4>
-                                
-                <div class="media">
-                    <div class="media-left">
-                        <a href="social/index.html">
-                          <img class="media-object" src="../img/social/levels/level1.jpg" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Mr. Jumper</h4>
-                        Author: Joey <br/>
-                        Likes:  123
-                    </div>
-                </div>
-                       
-                <div class="media">
-                    <div class="media-left">
-                        <a href="social/index.html">
-                          <img class="media-object" src="../img/social/levels/level2.jpg" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Sponge Jumper</h4>
-                        Author: Jack <br/>
-                        Likes:  101
-                    </div>
-                </div>
-                
-                <div class="media">
-                    <div class="media-left">
-                        <a href="social/index.html">
-                          <img class="media-object" src="../img/social/levels/level3.jpg" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Frog Jumper</h4>
-                        Author: Chris <br/>
-                        Likes:  100
-                    </div>
-                </div>
-                
-                <div class="media">
-                    <div class="media-left">
-                        <a href="social/index.html">
-                          <img class="media-object" src="../img/social/levels/level4.jpg" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Mario Jumper</h4>
-                        Author: Sarah <br/>
-                        Likes:  94
-                    </div>
-                </div>
-                
-                <div class="media">
-                    <div class="media-left">
-                        <a href="social/index.html">
-                          <img class="media-object" src="../img/social/levels/level5.jpg" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Cloud Jumper</h4>
-                        Author: Noah <br/>
-                        Likes:  90
-                    </div>
-                </div>
-                
-                <div class="media">
-                    <div class="media-left">
-                        <a href="social/index.html">
-                          <img class="media-object" src="../img/social/levels/level6.jpg" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Stone Jumper</h4>
-                        Author: Karll <br/>
-                        Likes:  87
-                    </div>
-                </div>
-                
-                <div class="media">
-                    <div class="media-left">
-                        <a href="social/index.html">
-                          <img class="media-object" src="../img/social/levels/level7.jpg" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Plants Jumper</h4>
-                        Author: Joseph <br/>
-                        Likes:  85
-                    </div>
-                </div>
-                
-                <div class="media">
-                    <div class="media-left">
-                        <a href="social/index.html">
-                          <img class="media-object" src="../img/social/levels/level8.jpg" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Jelly Jumper</h4>
-                        Author: Joey <br/>
-                        Likes:  77
-                    </div>
-                </div>
-                    
-                <div class="media">
-                    <div class="media-left">
-                        <a href="social/index.html">
-                          <img class="media-object" src="../img/social/levels/level9.jpg" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Jumper Jam</h4>
-                        Author: Marley <br/>
-                        Likes:  43
-                    </div>
-                </div>
-                    
-                <div class="media">
-                    <div class="media-left">
-                        <a href="social/index.html">
-                          <img class="media-object" src="../img/social/levels/level10.jpg" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Shake Jumper</h4>
-                        Author: Thom <br/>
-                        Likes:  40
-                    </div>
-                </div>
-                    
-                <div class="media">
-                    <div class="media-left">
-                        <a href="social/index.html">
-                          <img class="media-object" src="../img/social/levels/level11.jpg" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Bell Jumper</h4>
-                        Author: Martha <br/>
-                        Likes:  39
-                    </div>
-                </div>
-                    
-                <div class="media">
-                    <div class="media-left">
-                        <a href="social/index.html">
-                          <img class="media-object" src="../img/social/levels/level12.jpg" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Level 22 Jumper</h4>
-                        Author: Martha <br/>
-                        Likes:  30
-                    </div>
-                </div>
-                    
-                <div class="media">
-                    <div class="media-left">
-                        <a href="social/index.html">
-                          <img class="media-object" src="../img/social/levels/level13.jpg" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Jungle Jumper</h4>
-                        Author: Thom <br/>
-                        Likes:  26
-                    </div>
-                </div>                   
-                <br/>
-                <br/>
+            <div class="media-body">
+                <h4 class="media-heading">Mr. Jumper</h4>
+                Author: Joey <br/>
+                Likes: 123
             </div>
         </div>
-    </body>
+
+        <div class="media">
+            <div class="media-left">
+                <a href="social/index.html">
+                    <img class="media-object" src="../img/social/levels/level2.jpg" alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Sponge Jumper</h4>
+                Author: Jack <br/>
+                Likes: 101
+            </div>
+        </div>
+
+        <div class="media">
+            <div class="media-left">
+                <a href="social/index.html">
+                    <img class="media-object" src="../img/social/levels/level3.jpg" alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Frog Jumper</h4>
+                Author: Chris <br/>
+                Likes: 100
+            </div>
+        </div>
+
+        <div class="media">
+            <div class="media-left">
+                <a href="social/index.html">
+                    <img class="media-object" src="../img/social/levels/level4.jpg" alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Mario Jumper</h4>
+                Author: Sarah <br/>
+                Likes: 94
+            </div>
+        </div>
+
+        <div class="media">
+            <div class="media-left">
+                <a href="social/index.html">
+                    <img class="media-object" src="../img/social/levels/level5.jpg" alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Cloud Jumper</h4>
+                Author: Noah <br/>
+                Likes: 90
+            </div>
+        </div>
+
+        <div class="media">
+            <div class="media-left">
+                <a href="social/index.html">
+                    <img class="media-object" src="../img/social/levels/level6.jpg" alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Stone Jumper</h4>
+                Author: Karll <br/>
+                Likes: 87
+            </div>
+        </div>
+
+        <div class="media">
+            <div class="media-left">
+                <a href="social/index.html">
+                    <img class="media-object" src="../img/social/levels/level7.jpg" alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Plants Jumper</h4>
+                Author: Joseph <br/>
+                Likes: 85
+            </div>
+        </div>
+
+        <div class="media">
+            <div class="media-left">
+                <a href="social/index.html">
+                    <img class="media-object" src="../img/social/levels/level8.jpg" alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Jelly Jumper</h4>
+                Author: Joey <br/>
+                Likes: 77
+            </div>
+        </div>
+
+        <div class="media">
+            <div class="media-left">
+                <a href="social/index.html">
+                    <img class="media-object" src="../img/social/levels/level9.jpg" alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Jumper Jam</h4>
+                Author: Marley <br/>
+                Likes: 43
+            </div>
+        </div>
+
+        <div class="media">
+            <div class="media-left">
+                <a href="social/index.html">
+                    <img class="media-object" src="../img/social/levels/level10.jpg" alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Shake Jumper</h4>
+                Author: Thom <br/>
+                Likes: 40
+            </div>
+        </div>
+
+        <div class="media">
+            <div class="media-left">
+                <a href="social/index.html">
+                    <img class="media-object" src="../img/social/levels/level11.jpg" alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Bell Jumper</h4>
+                Author: Martha <br/>
+                Likes: 39
+            </div>
+        </div>
+
+        <div class="media">
+            <div class="media-left">
+                <a href="social/index.html">
+                    <img class="media-object" src="../img/social/levels/level12.jpg" alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Level 22 Jumper</h4>
+                Author: Martha <br/>
+                Likes: 30
+            </div>
+        </div>
+
+        <div class="media">
+            <div class="media-left">
+                <a href="social/index.html">
+                    <img class="media-object" src="../img/social/levels/level13.jpg" alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Jungle Jumper</h4>
+                Author: Thom <br/>
+                Likes: 26
+            </div>
+        </div>
+        <br/>
+        <br/>
+    </div>
+</div>
+</body>
 </html>
