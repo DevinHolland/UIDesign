@@ -18,7 +18,31 @@
 </head>
 <body>
 <style id="stylesheet">
+    #character {
+        left: 50px;
+        top: 50px;
+        border-radius: 50px;
+    }
 
+    #left {
+        left: 50px;
+        top: 500px;
+    }
+
+    #right {
+        top: 400px;
+        left: 250px;
+    }
+
+    .trap {
+        top: 300px;
+        left: 350px;
+    }
+
+    #goal {
+        top: 400px;
+        left: 500px;
+    }
 </style>
 <div id="sb-site">
     <nav role="navigation" class="navbar navbar-default">
@@ -47,13 +71,39 @@
     </nav>
 
     <section id="editor">
-        <h3>Assignment: Create a character, a platform, and a goal.</h3>
+        <h3>Assignment: Use the CSS rules to create HTML for each rule.</h3>
         <form id="add-new-form">
             <label for="html">HTML</label>
             <textarea autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="html"></textarea>
 
             <label for="css">CSS</label>
-            <textarea autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="css"></textarea>
+            <textarea autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="css">
+#character {
+    left: 50px;
+    top: 50px;
+    border-radius: 50px;
+}
+
+#left {
+    left: 50px;
+    top: 500px;
+}
+
+#right {
+    top: 400px;
+    left: 250px;
+}
+
+.trap {
+    top: 300px;
+    left: 350px;
+}
+
+#goal {
+    top: 400px;
+    left: 500px;
+}
+            </textarea>
         </form>
 
         <div id="play">
