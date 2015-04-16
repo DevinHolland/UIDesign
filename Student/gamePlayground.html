@@ -271,80 +271,81 @@
             var deltaTime;
 
             var gameLoop = function () {
-                prevTime = curTime;
-                curTime = Date.now();
-                deltaTime = (curTime - prevTime) / 1000;
+                if(inGame) {
+                    prevTime = curTime;
+                    curTime = Date.now();
+                    deltaTime = (curTime - prevTime) / 1000;
 
-                if ($character.velocity.y + (gravity * deltaTime) <= terminalVelocity)
-                    $character.velocity.y += (gravity * deltaTime);
+                    if ($character.velocity.y + (gravity * deltaTime) <= terminalVelocity)
+                        $character.velocity.y += (gravity * deltaTime);
 
-                if (keysDown[68] || keysDown[39]) {
-                    $character.velocity.x = 5;
-                } else if (keysDown[65] || keysDown[37]) {
-                    $character.velocity.x = -5;
-                } else if ($character.velocity.x != 0) {
-                    if ($character.velocity.x > 0) {
-                        $character.velocity.x -= 10 * deltaTime;
-                        if ($character.velocity.x < 0) {
-                            $character.velocity.x = 0;
-                        }
-                    } else {
-                        $character.velocity.x += 10 * deltaTime;
+                    if (keysDown[68] || keysDown[39]) {
+                        $character.velocity.x = 5;
+                    } else if (keysDown[65] || keysDown[37]) {
+                        $character.velocity.x = -5;
+                    } else if ($character.velocity.x != 0) {
                         if ($character.velocity.x > 0) {
-                            $character.velocity.x = 0;
-                        }
-                    }
-                }
-
-                var currentTop = parseFloat($character.css('top'));
-                var currentLeft = parseFloat($character.css('left'));
-
-                if (isNaN(currentTop)) currentTop = 0;
-                if (isNaN(currentLeft)) currentLeft = 0;
-
-                if (currentTop + $character.velocity.y + $character.height() > $gameScreen.height()) {
-                    endGame();
-                    return;
-                }
-
-                $character.css({
-                    top: currentTop + $character.velocity.y
-                });
-
-                if (currentLeft + $character.velocity.x > 0 && currentLeft + $character.velocity.x + $character.width() < $gameScreen.width()) {
-                    $character.css({
-                        left: currentLeft + $character.velocity.x
-                    })
-                }
-
-                $platforms.each(function () {
-                    if (overlaps($character, $(this))) {
-                        if ($character.velocity.y > 0) {
-                            if ($(this).hasClass('trap')) {
-                                endGame('hitTrap');
-                                return false;
-                            } else if ($(this).attr('id') == "goal") {
-                                endGame('won');
-                                return false;
-                            } else if ($(this).hasClass('spring')) {
-                                $character.velocity.y = -terminalVelocity * 1.25;
-                            } else {
-                                $character.velocity.y = -terminalVelocity;
+                            $character.velocity.x -= 10 * deltaTime;
+                            if ($character.velocity.x < 0) {
+                                $character.velocity.x = 0;
                             }
-                            $character.css({
-                                top: parseFloat($(this).css('top')) - $character.height()
-                            });
                         } else {
-                            $character.velocity.y = 0;
-                            $character.css({
-                                top: parseFloat($(this).css('top')) + $(this).height()
-                            });
+                            $character.velocity.x += 10 * deltaTime;
+                            if ($character.velocity.x > 0) {
+                                $character.velocity.x = 0;
+                            }
                         }
-
-                        return false;
                     }
-                });
 
+                    var currentTop = parseFloat($character.css('top'));
+                    var currentLeft = parseFloat($character.css('left'));
+
+                    if (isNaN(currentTop)) currentTop = 0;
+                    if (isNaN(currentLeft)) currentLeft = 0;
+
+                    if (currentTop + $character.velocity.y + $character.height() > $gameScreen.height()) {
+                        endGame();
+                        return;
+                    }
+
+                    $character.css({
+                        top: currentTop + $character.velocity.y
+                    });
+
+                    if (currentLeft + $character.velocity.x > 0 && currentLeft + $character.velocity.x + $character.width() < $gameScreen.width()) {
+                        $character.css({
+                            left: currentLeft + $character.velocity.x
+                        })
+                    }
+
+                    $platforms.each(function () {
+                        if (overlaps($character, $(this))) {
+                            if ($character.velocity.y > 0) {
+                                if ($(this).hasClass('trap')) {
+                                    endGame('hitTrap');
+                                    return false;
+                                } else if ($(this).attr('id') == "goal") {
+                                    endGame('won');
+                                    return false;
+                                } else if ($(this).hasClass('spring')) {
+                                    $character.velocity.y = -terminalVelocity * 1.25;
+                                } else {
+                                    $character.velocity.y = -terminalVelocity;
+                                }
+                                $character.css({
+                                    top: parseFloat($(this).css('top')) - $character.height()
+                                });
+                            } else {
+                                $character.velocity.y = 0;
+                                $character.css({
+                                    top: parseFloat($(this).css('top')) + $(this).height()
+                                });
+                            }
+
+                            return false;
+                        }
+                    });
+                }
                 if(inGame){
                     window.requestAnimationFrame(gameLoop);
                 }
