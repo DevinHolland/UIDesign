@@ -45,6 +45,34 @@ and open the template in the editor.
                 </ol>
             </div>                      
 
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong>Topic</strong></div>                
+                <div class="panel-body">  
+                   <label id="topic1"></label>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong>Description</strong></div>                
+                <div class="panel-body">  
+                   Here is a description of my problem. Does someone have any idea on how to proceed?
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Sarah's Comment</div>                 
+                <div class="panel-body">
+                    Take a look to this website http://www.w3schools.com
+                </div>
+            </div>
+            
+            <div class="panel panel-default">
+                <div class="panel-heading">Connor's Comment</div>                
+                <div class="panel-body">
+                    You can mail the teacher!
+                </div>
+            </div>
+
+            <a class="btn btn-primary" href="#">Write a comment</a>
+
             <script language="JavaScript">
 
                 // this script must be after the form else
@@ -54,49 +82,9 @@ and open the template in the editor.
                 var string = window.location.href;
                 var getit = new Array();
                 getit = string.split("?");
-                document.getElementById("topic").textContent = unescape(getit[1]);                                          
+                document.getElementById("topic").textContent = unescape(getit[1]);
+                document.getElementById("topic1").textContent = unescape(getit[1]);
             </script>
-
-            <div class="panel panel-default">
-                <div class="panel-heading"><strong>Topic</strong></div>                
-                <div class="panel-body">  
-                    <form>
-                        <div class="form-group">
-                            <textarea class="form-control" id="topicDescription">
-Fake Fake Fake
-                            </textarea> 
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">Sarah's Comment</div>                 
-                <div class="panel-body">
-                    <form>
-                        <div class="form-group">
-                            <textarea class="form-control" id="topicDescription">
-Fake Fake Fake
-                            </textarea> 
-                        </div>
-                    </form>
-                </div>
-            </div>
-            
-            <div class="panel panel-default">
-                <div class="panel-heading">Connor's Comment</div>                
-                <div class="panel-body">
-                    <form>
-                        <div class="form-group">
-                            <textarea class="form-control" id="topicDescription">
-Fake Fake Fake
-                            </textarea> 
-                        </div>
-                    </form>                    
-                </div>
-            </div>
-
-            <a class="btn btn-primary" href="#">Write a comment</a>
-
         </div>
     </body>
 </html>

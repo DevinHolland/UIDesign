@@ -75,8 +75,7 @@
         }
         
         function goToDiscussion(obj) {
-            var topic = obj.parentNode.parentNode.cells[0].innerText; 
-            alert(topic);
+            var topic = obj.parentNode.parentNode.cells[0].innerText;             
             window.location.href = "discussionTopic.html?" + topic;    
         }
     </script>
@@ -179,20 +178,10 @@
                             <td>04/13/2015</td>
                         </tr>
                         <tr>
-                            <td><a href="" onclick="goToDiscussion(this)">Nested structures</a></td>
+                            <td><a href="" onclick="goToDiscussion(this)">Syntax</a></td>
                             <td>Joey</td>
                             <td>04/13/2015</td>
-                        </tr>
-                        <tr>
-                            <td><a href="" onclick="goToDiscussion(this)">Nested structures</a></td>
-                            <td>Joey</td>
-                            <td>04/13/2015</td>
-                        </tr>
-                        <tr>
-                            <td><a href="" onclick="goToDiscussion(this)">Nested structures</a></td>
-                            <td>Joey</td>
-                            <td>04/13/2015</td>
-                        </tr>                   
+                        </tr>                             
                     </tbody>
                 </table>
                 <a href="#" data-toggle="modal" data-target="#mdNewTopic" class="btn btn-success">New Topic</a>
