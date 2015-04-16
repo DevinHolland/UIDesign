@@ -80,6 +80,13 @@
             window.location.href = "discussionTopic.html?" + topic;    
         }
     </script>
+
+    <style>
+        h4 {
+            border-bottom: 1px solid lightgray;
+            padding: 0 0 4px 0;
+        }
+    </style>
 </head>
 <body ng-controller="MainCtrl as main">
 <nav role="navigation" class="navbar navbar-default">
@@ -109,104 +116,58 @@
 <div class="col-md-2"></div>
 <div class="col-md-8">
     <div>
-        <ol class="breadcrumb">
-            <li><h4>Assignments</h4></li>
-        </ol>
-    </div>
-    <div>
-        <tabset>
-            <tab heading="Assignments">
-                <table class="table table-bordered table-hover">
-                    <thead>
-                    <tr>
-                        <th>Assignment</th>
-                        <th>Due Date</th>
-                        <th>Points</th>
-                        <th>Grade</th>
-                        <th class="col-md-2">Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><a href="assignments/assignment1.html">Assignment 1</a></td>
-                            <td>05/01/2015</td>
-                            <td>10</td>
-                            <td></td>
-                            <td>
-                                <a href="assignments/gameEditorAssignment1.html" data-tooltip="Write a solution" class="glyphicon glyphicon-edit"></a>&nbsp &nbsp
-                                <a href="#" data-toggle="modal" data-target="#myModal" data-tooltip="Copy to playground" class="glyphicon glyphicon-duplicate"></a>&nbsp &nbsp
-                                <a id="share_btn" href="#" onclick="share(this)" data-tooltip="Share" class="glyphicon glyphicon-share"></a> 
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><a href="assignments/assignment2.html">Assignment 2</a></td>
-                            <td>05/08/2015</td>
-                            <td>25</td>
-                            <td></td>
-                            <td>
-                                <a href="assignments/gameEditorAssignment2.html" data-tooltip="Write a solution" data-tooltip="Write a solution" class="glyphicon glyphicon-edit"></a>&nbsp &nbsp
-                                <a href="#" data-toggle="modal" data-target="#myModal" data-tooltip="Copy to playground" class="glyphicon glyphicon-duplicate"></a>&nbsp &nbsp
-                                <a id="share_btn" href="#" onclick="share(this)" data-tooltip="Share" class="glyphicon glyphicon-share"></a> 
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><a href="assignments/assignment3.html">Assignment 3</a></td>
-                            <td>05/18/2015</td>
-                            <td>25</td>
-                            <td></td>
-                            <td>
-                                <a href="assignments/gameEditorAssignment3.html" data-tooltip="Write a solution" data-tooltip="Write a solution" class="glyphicon glyphicon-edit"></a>&nbsp &nbsp
-                                <a href="#" data-toggle="modal" data-target="#myModal" data-tooltip="Copy to playground" class="glyphicon glyphicon-duplicate"></a>&nbsp &nbsp
-                                <a id="share_btn" href="#" onclick="share(this)" data-tooltip="Share" class="glyphicon glyphicon-share"></a> 
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>                
-            </tab>
-            <tab heading="Discussions">
-                <table id="discussion_table" class="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th class="col-md-6">Topic</th>
-                            <th class="col-md-3">Author</th>
-                            <th class="col-md-3">Date of Creation</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><a href="" onclick="goToDiscussion(this)">Nested structures</a></td>
-                            <td>Joey</td>
-                            <td>04/13/2015</td>
-                        </tr>
-                        <tr>
-                            <td><a href="" onclick="goToDiscussion(this)">Nested structures</a></td>
-                            <td>Joey</td>
-                            <td>04/13/2015</td>
-                        </tr>
-                        <tr>
-                            <td><a href="" onclick="goToDiscussion(this)">Nested structures</a></td>
-                            <td>Joey</td>
-                            <td>04/13/2015</td>
-                        </tr>
-                        <tr>
-                            <td><a href="" onclick="goToDiscussion(this)">Nested structures</a></td>
-                            <td>Joey</td>
-                            <td>04/13/2015</td>
-                        </tr>                   
-                    </tbody>
-                </table>
-                <a href="#" data-toggle="modal" data-target="#mdNewTopic" class="btn btn-success">New Topic</a>
-            </tab>
-        </tabset>
-        
+        <h4>Assignments</h4>
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Assignment</th>
+                <th>Due Date</th>
+                <th>Points</th>
+                <th>Grade</th>
+                <th class="col-md-2">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="assignments/assignment1.html">Assignment 1</a></td>
+                    <td>05/01/2015</td>
+                    <td>10</td>
+                    <td></td>
+                    <td>
+                        <a href="assignments/gameEditorAssignment1.html" data-tooltip="Write a solution" class="glyphicon glyphicon-edit"></a>&nbsp &nbsp
+                        <a href="#" data-toggle="modal" data-target="#myModal" data-tooltip="Copy to playground" class="glyphicon glyphicon-duplicate"></a>&nbsp &nbsp
+                        <a id="share_btn" href="#" onclick="share(this)" data-tooltip="Share" class="glyphicon glyphicon-share"></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="assignments/assignment2.html">Assignment 2</a></td>
+                    <td>05/08/2015</td>
+                    <td>25</td>
+                    <td></td>
+                    <td>
+                        <a href="assignments/gameEditorAssignment2.html" data-tooltip="Write a solution" data-tooltip="Write a solution" class="glyphicon glyphicon-edit"></a>&nbsp &nbsp
+                        <a href="#" data-toggle="modal" data-target="#myModal" data-tooltip="Copy to playground" class="glyphicon glyphicon-duplicate"></a>&nbsp &nbsp
+                        <a id="share_btn" href="#" onclick="share(this)" data-tooltip="Share" class="glyphicon glyphicon-share"></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="assignments/assignment3.html">Assignment 3</a></td>
+                    <td>05/18/2015</td>
+                    <td>25</td>
+                    <td></td>
+                    <td>
+                        <a href="assignments/gameEditorAssignment3.html" data-tooltip="Write a solution" data-tooltip="Write a solution" class="glyphicon glyphicon-edit"></a>&nbsp &nbsp
+                        <a href="#" data-toggle="modal" data-target="#myModal" data-tooltip="Copy to playground" class="glyphicon glyphicon-duplicate"></a>&nbsp &nbsp
+                        <a id="share_btn" href="#" onclick="share(this)" data-tooltip="Share" class="glyphicon glyphicon-share"></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
         <br/> 
         <br/>
-        <div>
-            <ol class="breadcrumb">
-                <li><h4>Playground</h4></li>
-            </ol>
-        </div>
-        <a href="gamePlayground.html" class="btn btn-success pull-left">Create a Level</a>
+
+        <h4>Playground <a href="gamePlayground.html" style="float: right;">New Level</a></h4>
         <br/>
         <br/>
         <table class="table table-bordered table-hover" id="playground_table">
@@ -218,6 +179,41 @@
                     <th class="col-md-3">Actions</th>
                 </tr>
             </thead>
+        </table>
+        <br />
+        <br />
+
+        <h4>Discussions <a href="#" data-toggle="modal" data-target="#mdNewTopic" style="float: right;">New Topic</a></h4>
+        <table id="discussion_table" class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th class="col-md-6">Topic</th>
+                <th class="col-md-3">Author</th>
+                <th class="col-md-3">Date of Creation</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><a href="" onclick="goToDiscussion(this)">Nested structures</a></td>
+                <td>Joey</td>
+                <td>04/13/2015</td>
+            </tr>
+            <tr>
+                <td><a href="" onclick="goToDiscussion(this)">Nested structures</a></td>
+                <td>Joey</td>
+                <td>04/13/2015</td>
+            </tr>
+            <tr>
+                <td><a href="" onclick="goToDiscussion(this)">Nested structures</a></td>
+                <td>Joey</td>
+                <td>04/13/2015</td>
+            </tr>
+            <tr>
+                <td><a href="" onclick="goToDiscussion(this)">Nested structures</a></td>
+                <td>Joey</td>
+                <td>04/13/2015</td>
+            </tr>
+            </tbody>
         </table>
     </div>
 </div>
