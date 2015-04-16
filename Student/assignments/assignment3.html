@@ -41,39 +41,39 @@ and open the template in the editor.
 
             <div>
                 <ol class="breadcrumb">
-                    <li><a href="../home.html">Workspace</a> / <label id="assignmentNo"></label></li>
+                    <li><a href="../home.html">Workspace</a> / <label id="assignmentNo">Assignment 3</label></li>
                 </ol>
             </div>                      
 
-            <script language="JavaScript">
-
-                // this script must be after the form else
-                // the document object is not recognized.
-                // unescape converts %20 to blanks, etc.
-
-                var string = window.location.href;
-                var getit = new Array();
-                getit = string.split("?");
-                document.getElementById("assignmentNo").textContent = unescape(getit[1]);
-                document.getElementById("title").textContent = unescape(getit[1]);
-            </script>
-
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>Description</strong></div>                
-                <div class="panel-body">      
+                <div class="panel-body">  
+                    In this assignment you will start writing your level from the scratch, i.e you will be writing the HTML and CSS code for your level. <br/>
+                    Be sure to include all of the required classes to make your level functional. <br/>
+                    You are required to include at least one "goal" and one "trap". <br/>
+                    Be creative!
                 </div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>Points Available</strong></div>                
-                <div class="panel-body"></div>
+                <div class="panel-body">
+                    25
+                </div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>Due Date</strong></div>                
-                <div class="panel-body"></div>
+                <div class="panel-body">
+                    05/18/2015
+                </div>
             </div>                
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>Grading Criteria</strong></div>                
-                <div class="panel-body"></div>
+                <div class="panel-body">
+                    HTML syntax: 30% <br/>
+                    HTML semantic: 30% <br/>
+                    CSS: 30%
+                    Creativity: 10%  
+                </div>
             </div>
             <a class="btn btn-primary" href="gameEditorAssignment3.html">Write a solution</a>
 

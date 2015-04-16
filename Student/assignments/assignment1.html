@@ -41,39 +41,39 @@ and open the template in the editor.
 
             <div>
                 <ol class="breadcrumb">
-                    <li><a href="../home.html">Workspace</a> / <label id="assignmentNo"></label></li>
+                    <li><a href="../home.html">Workspace</a> / <label id="assignmentNo">Assignment 1</label></li>
                 </ol>
             </div>                      
-
-            <script language="JavaScript">
-
-                // this script must be after the form else
-                // the document object is not recognized.
-                // unescape converts %20 to blanks, etc.
-
-                var string = window.location.href;
-                var getit = new Array();
-                getit = string.split("?");
-                document.getElementById("assignmentNo").textContent = unescape(getit[1]);
-                document.getElementById("title").textContent = unescape(getit[1]);
-            </script>
 
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>Description</strong></div>                
                 <div class="panel-body">      
+                    In this assignment, you will be writing the correspondent HTML code for the CSS that was given for you. <br/>
+                    The CSS code reflects the main classes that you should have in all of your levels. <br/>
+                    You are free to design your level. Include as many feature that you want to. <br/>
+                    You are required to use all CSS classes at least once. <br/>
+                    Be creative!
                 </div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>Points Available</strong></div>                
-                <div class="panel-body"></div>
+                <div class="panel-body">
+                    10
+                </div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>Due Date</strong></div>                
-                <div class="panel-body"></div>
+                <div class="panel-body">
+                    05/01/2015
+                </div>
             </div>                
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>Grading Criteria</strong></div>                
-                <div class="panel-body"></div>
+                <div class="panel-body">
+                    Using all CSS classes at least once: 50% <br/>
+                    HTML syntax: 25% <br/>
+                    HTML semantic: 25%
+                </div>
             </div>
             <a class="btn btn-primary" href="gameEditorAssignment1.html">Write a solution</a>
 

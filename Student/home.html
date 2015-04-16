@@ -16,39 +16,57 @@
             var text = obj.className;   
 
             if (text == "glyphicon glyphicon-share") {                    
-                obj.className = "glyphicon glyphicon-ok";  
+                obj.className = "glyphicon glyphicon-ok";                 
             }
             else {
-                obj.className = "glyphicon glyphicon-share";      
+                obj.className = "glyphicon glyphicon-share";                    
             }
         }
         
         
-        function newRow() {
-            var table = document.getElementById("playground_table");
+        function newRow(table_name) {               
+            var table = document.getElementById(table_name);
             var row = table.insertRow(1);         
-
             var i;
-            for (i = 0; i < 4; i++) {
-                row.insertCell(i);
-            }               
-
             var date = new Date();
+                
+            if (table_name == "playground_table") {
+                for (i = 0; i < 4; i++) {
+                    row.insertCell(i);
+                }                               
 
-            row.cells[1].innerHTML = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
-            row.cells[2].innerHTML = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + "    " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-            row.cells[3].innerHTML = "<a href=\"#\" onclick=\"deleteLevel(this)\" data-tooltip=\"Delete\" class=\"glyphicon glyphicon-trash\"></a> &nbsp &nbsp" +
-                                     "<a href=\"#\" data-toggle=\"modal\" data-target=\"#myModal\" data-tooltip=\"Copy to playground\" class=\"glyphicon glyphicon-duplicate\"></a> &nbsp &nbsp" +
-                                     "<a href=\"#\" id=\"share_btn" + row.rowIndex + "\" onclick=\"share(this)\" data-tooltip=\"Share\" class=\"glyphicon glyphicon-share\"></a>";               
+                row.cells[1].innerHTML = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+                row.cells[2].innerHTML = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + "    " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+                row.cells[3].innerHTML = "<a href=\"#\" onclick=\"deleteLevel(this)\" data-tooltip=\"Delete\" class=\"glyphicon glyphicon-trash\"></a> &nbsp &nbsp" +
+                                         "<a href=\"#\" data-toggle=\"modal\" data-target=\"#myModal\" data-tooltip=\"Copy to playground\" class=\"glyphicon glyphicon-duplicate\"></a> &nbsp &nbsp" +
+                                         "<a href=\"#\" id=\"share_btn" + row.rowIndex + "\" onclick=\"share(this)\" data-tooltip=\"Share\" class=\"glyphicon glyphicon-share\"></a>";               
+            }
+            else {
+                for (i = 0; i < 3; i++) {
+                    row.insertCell(i);                     
+                }  
+                
+                row.cells[1].innerHTML = "Joey";
+                row.cells[2].innerHTML = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+            }
 
             return row;
-        }
+        }        
         
         function createLevel() {           
-            var row = newRow();           
+            var row = newRow("playground_table");           
             var name = document.getElementById("assignment").value;
             document.getElementById("assignment").value = "";
             row.cells[0].innerHTML = "<a href=\"gameEditor.html\">" + name + "</a>";
+        }
+        
+        function createTopic() {             
+            var row = newRow("discussion_table"); 
+            var topic = document.getElementById("topic").value;            
+            document.getElementById("topic").value = "";
+            document.getElementById("description").value = "";
+            row.cells[0].innerHTML = "<a href=\"#\" onclick=\"goToDiscussion(this)\">" + topic + "</a>";
+
         }
         
         function deleteLevel(row) {
@@ -57,7 +75,8 @@
         }
         
         function goToDiscussion(obj) {
-            var topic = obj.parentNode.parentNode.cells[0].innerText;             
+            var topic = obj.parentNode.parentNode.cells[0].innerText; 
+            alert(topic);
             window.location.href = "discussionTopic.html?" + topic;    
         }
     </script>
@@ -145,7 +164,7 @@
                 </table>                
             </tab>
             <tab heading="Discussions">
-                <table class="table table-bordered table-hover">
+                <table id="discussion_table" class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th class="col-md-6">Topic</th>
@@ -176,7 +195,7 @@
                         </tr>                   
                     </tbody>
                 </table>
-                <button class="btn btn-success">New Topic</button>
+                <a href="#" data-toggle="modal" data-target="#mdNewTopic" class="btn btn-success">New Topic</a>
             </tab>
         </tabset>
         
@@ -227,6 +246,36 @@
         </div>
     </div>
 </div>
+
+<!-- Modal New Discussion Topic -->
+<div class="modal fade" id="mdNewTopic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Adding a new topic</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form"> 
+                    <div class="form-group">
+                        <label for="topic">Topic</label>
+                        <input type="text" class="form-control" id="topic"/>
+                    </div>                    
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" id="description"></textarea>
+                    </div>            
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary"  data-dismiss="modal" onclick="createTopic()">Create</button>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>

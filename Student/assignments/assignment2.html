@@ -41,39 +41,37 @@ and open the template in the editor.
 
             <div>
                 <ol class="breadcrumb">
-                    <li><a href="../home.html">Workspace</a> / <label id="assignmentNo"></label></li>
+                    <li><a href="../home.html">Workspace</a> / <label id="assignmentNo">Assignment 2</label></li>
                 </ol>
             </div>                      
 
-            <script language="JavaScript">
-
-                // this script must be after the form else
-                // the document object is not recognized.
-                // unescape converts %20 to blanks, etc.
-
-                var string = window.location.href;
-                var getit = new Array();
-                getit = string.split("?");
-                document.getElementById("assignmentNo").textContent = unescape(getit[1]);
-                document.getElementById("title").textContent = unescape(getit[1]);
-            </script>
-
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>Description</strong></div>                
-                <div class="panel-body">      
+                <div class="panel-body">    
+                    In this assignment, you will be writing the correspondent CSS code for the HTML code that was given for you. <br/>                    
+                    You are free to add other HTML elements. Include as many feature that you want to. <br/>                    
+                    Be creative!
                 </div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>Points Available</strong></div>                
-                <div class="panel-body"></div>
+                <div class="panel-body">
+                    25
+                </div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>Due Date</strong></div>                
-                <div class="panel-body"></div>
+                <div class="panel-body">
+                    05/08/2015
+                </div>
             </div>                
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>Grading Criteria</strong></div>                
-                <div class="panel-body"></div>
+                <div class="panel-body">                    
+                    HTML syntax: 40% <br/>
+                    HTML semantic: 40% <br/>
+                    Creativity: 20%                    
+                </div>
             </div>
             <a class="btn btn-primary" href="gameEditorAssignment2.html">Write a solution</a>
 
