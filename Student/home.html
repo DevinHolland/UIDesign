@@ -75,8 +75,7 @@
         }
         
         function goToDiscussion(obj) {
-            var topic = obj.parentNode.parentNode.cells[0].innerText; 
-            alert(topic);
+            var topic = obj.parentNode.parentNode.cells[0].innerText;             
             window.location.href = "discussionTopic.html?" + topic;    
         }
     </script>
@@ -163,13 +162,10 @@
                 </tr>
             </tbody>
         </table>
-
         <br/> 
         <br/>
 
-        <h4>Playground <a href="gamePlayground.html" style="float: right;">New Level</a></h4>
-        <br/>
-        <br/>
+        <h4>Playground <a href="gamePlayground.html" style="float: right;">New Level</a></h4>        
         <table class="table table-bordered table-hover" id="playground_table">
             <thead>
                 <tr>
@@ -199,20 +195,11 @@
                 <td>04/13/2015</td>
             </tr>
             <tr>
-                <td><a href="" onclick="goToDiscussion(this)">Nested structures</a></td>
+                <td><a href="" onclick="goToDiscussion(this)">Syntax Errors</a></td>
                 <td>Joey</td>
                 <td>04/13/2015</td>
             </tr>
-            <tr>
-                <td><a href="" onclick="goToDiscussion(this)">Nested structures</a></td>
-                <td>Joey</td>
-                <td>04/13/2015</td>
-            </tr>
-            <tr>
-                <td><a href="" onclick="goToDiscussion(this)">Nested structures</a></td>
-                <td>Joey</td>
-                <td>04/13/2015</td>
-            </tr>
+ 
             </tbody>
         </table>
     </div>
