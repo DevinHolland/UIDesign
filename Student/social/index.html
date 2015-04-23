@@ -18,27 +18,93 @@
 </head>
 <body>
 <style id="stylesheet">
-    #one {
-        top: 500px;
-        left: 100px;
-    }
-
     #character {
-        left: 100px;
+        background-color: transparent;
+        height: 133px;
+        width: 115px;
     }
 
-    #two {
-        top: 400px;
-        left: 250px;
+    #body-wrapper {
+        position: relative;
     }
 
-    #three {
-        top: 200px;
-        left: 250px;
+    #head {
+        width: 25px;
+        height: 25px;
+        background-color: tan;
+        left: 45px;
+        position: absolute;
     }
-    #goal {
-        top: 500px;
-        left: 800px;
+
+    #torso {
+        background-color: black;
+        height: 60px;
+        width: 40px;
+        left: 37px;
+        top: 25px;
+        position: absolute;
+    }
+
+    #arm1 {
+        background-color: tan;
+        height: 10px;
+        width: 40px;
+        top: 30px;
+        position: absolute;
+    }
+
+    #arm2 {
+        background-color: tan;
+        height: 10px;
+        width: 40px;
+        top: 30px;
+        left: 74px;
+        position: absolute;
+    }
+
+    #leg1 {
+        position: absolute;
+        background-color: blue;
+        height: 50px;
+        width: 15px;
+        top: 82px;
+        left: 40px;
+    }
+
+    #leg2 {
+        position: absolute;
+        background-color: blue;
+        height: 50px;
+        width: 15px;
+        top: 82px;
+        left: 59px;
+    }
+
+    /* safari and chrome */
+    @-webkit-keyframes wiggle {
+        0% {-webkit-transform:rotate(8deg);}
+        50% {-webkit-transform:rotate(-8deg);}
+        100% {-webkit-transform:rotate(8deg);}
+    }
+
+    /* firefox */
+    @-moz-keyframes wiggle {
+        0% {-moz-transform:rotate(8deg);}
+        50% {-moz-transform:rotate(-8deg);}
+        100% {-moz-transform:rotate(8deg);}
+    }
+
+    /* anyone brave enough to implement the ideal method */
+    @keyframes wiggle {
+        0% {transform:rotate(8deg);}
+        50% {transform:rotate(-8deg);}
+        100% {transform:rotate(8deg);}
+    }
+
+    .wiggler {
+        -webkit-animation: wiggle 0.5s infinite;
+        -moz-animation: wiggle 0.5s infinite;
+        animation: wiggle 0.5s infinite;
     }
 </style>
 <div id="sb-site">
@@ -73,37 +139,107 @@
             <input type="text" id="title" style="width: 95%;" value="The Three Platmigos" />
             <label for="html">HTML</label>
             <textarea autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="html">
-<img src="smiley.png" id="character" />
-<div class="platform trap" id="one"></div>
-<div class="platform" id="two"></div>
-<div class="platform" id="three"></div>
-<div class="platform" id="goal"></div>
+<div id="character">
+    <div id="body-wrapper">
+        <div id="head"></div>
+        <div id="torso"></div>
+        <div id="arm1" class="wiggler"></div>
+        <div id="arm2" class="wiggler"></div>
+        <div id="leg1" class="wiggler"></div>
+        <div id="leg2" class="wiggler"></div>
+    </div>
+</div>
             </textarea>
 
             <label for="css">CSS</label>
             <textarea autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="css">
-#one {
-    top: 500px;
-    left: 100px;
-}
-
 #character {
-    left: 100px;
+    background-color: transparent;
+    height: 133px;
+    width: 115px;
 }
 
-#two {
-    top: 400px;
-    left: 250px;
+#body-wrapper {
+    position: relative;
 }
 
-#three {
-    top: 200px;
-    left: 250px;
+#head {
+    width: 25px;
+    height: 25px;
+    background-color: tan;
+    left: 45px;
+    position: absolute;
 }
 
-#goal {
-    top: 500px;
-    left: 800px;
+#torso {
+    background-color: black;
+    height: 60px;
+    width: 40px;
+    left: 37px;
+    top: 25px;
+    position: absolute;
+}
+
+#arm1 {
+    background-color: tan;
+    height: 10px;
+    width: 40px;
+    top: 30px;
+    position: absolute;
+}
+
+#arm2 {
+    background-color: tan;
+    height: 10px;
+    width: 40px;
+    top: 30px;
+    left: 74px;
+    position: absolute;
+}
+
+#leg1 {
+    position: absolute;
+    background-color: blue;
+    height: 50px;
+    width: 15px;
+    top: 82px;
+    left: 40px;
+}
+
+#leg2 {
+    position: absolute;
+    background-color: blue;
+    height: 50px;
+    width: 15px;
+    top: 82px;
+    left: 59px;
+}
+
+/* safari and chrome */
+@-webkit-keyframes wiggle {
+	0% {-webkit-transform:rotate(8deg);}
+	50% {-webkit-transform:rotate(-8deg);}
+	100% {-webkit-transform:rotate(8deg);}
+}
+
+/* firefox */
+@-moz-keyframes wiggle {
+	0% {-moz-transform:rotate(8deg);}
+	50% {-moz-transform:rotate(-8deg);}
+	100% {-moz-transform:rotate(8deg);}
+}
+
+/* anyone brave enough to implement the ideal method */
+@keyframes wiggle {
+	0% {transform:rotate(8deg);}
+	50% {transform:rotate(-8deg);}
+	100% {transform:rotate(8deg);}
+}
+
+.wiggler {
+	-webkit-animation: wiggle 0.5s infinite;
+	-moz-animation: wiggle 0.5s infinite;
+	animation: wiggle 0.5s infinite;
 }
             </textarea>
         </form>
@@ -117,11 +253,16 @@
     </section>
 
     <section id="game-screen">
-        <img src="smiley.png" id="character" />
-        <div class="platform trap" id="one"></div>
-        <div class="platform" id="two"></div>
-        <div class="platform" id="three"></div>
-        <div class="platform" id="goal"></div>
+        <div id="character">
+            <div id="body-wrapper">
+                <div id="head"></div>
+                <div id="torso"></div>
+                <div id="arm1" class="wiggler"></div>
+                <div id="arm2" class="wiggler"></div>
+                <div id="leg1" class="wiggler"></div>
+                <div id="leg2" class="wiggler"></div>
+            </div>
+        </div>
     </section>
 </div>
 
