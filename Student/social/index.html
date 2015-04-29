@@ -18,6 +18,11 @@
 </head>
 <body>
 <style id="stylesheet">
+    #game-screen {
+        background-image: url('http://i.kinja-img.com/gawker-media/image/upload/s--0r_6Cdk0--/c_fit,fl_progressive,q_80,w_636/18poxor3hcqx7png.png');
+        background-size: cover;
+    }
+
     #character {
         background-color: transparent;
         height: 133px;
@@ -106,6 +111,58 @@
         -moz-animation: wiggle 0.5s infinite;
         animation: wiggle 0.5s infinite;
     }
+
+    #platform1 {
+        top: 500px;
+        left: 25px;
+    }
+
+    #platform2 {
+        top: 700px;
+        left: 300px;
+    }
+
+    #platform3 {
+        top: 900px;
+        left: 575px;
+    }
+
+    #platform4 {
+        top: 700px;
+        left: 850px;
+    }
+
+    #platform5 {
+        top: 500px;
+        left: 700px;
+    }
+
+    #platform6 {
+        top: 300px;
+        left: 600px;
+    }
+
+    #platform7 {
+        top: 650px;
+        left: 150px;
+    }
+
+    #goal {
+        top: 100px;
+        left: 400px;
+    }
+
+    @-webkit-keyframes slide {
+        0% {-webkit-transform:translate(0px);}
+        50% {-webkit-transform:translate(300px);}
+        100% {-webkit-transform:translate(0px);}
+    }
+
+    .slider {
+        -webkit-animation: slide 3s infinite;
+        -moz-animation: slide 0.5s infinite;
+        animation: slide 0.5s infinite;
+    }
 </style>
 <div id="sb-site">
     <nav role="navigation" class="navbar navbar-default">
@@ -149,10 +206,24 @@
         <div id="leg2" class="wiggler"></div>
     </div>
 </div>
+
+<div id="platform1" class="platform"></div>
+<div id="platform2" class="platform"></div>
+<div id="platform3" class="platform"></div>
+<div id="platform4" class="platform"></div>
+<div id="platform5" class="platform"></div>
+<div id="platform6" class="platform"></div>
+<div id="platform7" class="platform trap slider"></div>
+<div id="goal" class="platform"></div>
             </textarea>
 
             <label for="css">CSS</label>
             <textarea autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="css">
+#game-screen {
+    background-image: url('http://i.kinja-img.com/gawker-media/image/upload/s--0r_6Cdk0--/c_fit,fl_progressive,q_80,w_636/18poxor3hcqx7png.png');
+    background-size: cover;
+}
+
 #character {
     background-color: transparent;
     height: 133px;
@@ -241,6 +312,58 @@
 	-moz-animation: wiggle 0.5s infinite;
 	animation: wiggle 0.5s infinite;
 }
+
+#platform1 {
+    top: 500px;
+    left: 25px;
+}
+
+#platform2 {
+    top: 700px;
+    left: 300px;
+}
+
+#platform3 {
+    top: 900px;
+    left: 575px;
+}
+
+#platform4 {
+    top: 700px;
+    left: 850px;
+}
+
+#platform5 {
+    top: 500px;
+    left: 700px;
+}
+
+#platform6 {
+    top: 300px;
+    left: 600px;
+}
+
+#platform7 {
+    top: 650px;
+    left: 150px;
+}
+
+#goal {
+    top: 100px;
+    left: 400px;
+}
+
+@-webkit-keyframes slide {
+	0% {-webkit-transform:translate(0px);}
+	50% {-webkit-transform:translate(300px);}
+	100% {-webkit-transform:translate(0px);}
+}
+
+.slider {
+	-webkit-animation: slide 3s infinite;
+	-moz-animation: slide 0.5s infinite;
+	animation: slide 0.5s infinite;
+}
             </textarea>
         </form>
 
@@ -263,6 +386,15 @@
                 <div id="leg2" class="wiggler"></div>
             </div>
         </div>
+
+        <div id="platform1" class="platform"></div>
+        <div id="platform2" class="platform"></div>
+        <div id="platform3" class="platform"></div>
+        <div id="platform4" class="platform"></div>
+        <div id="platform5" class="platform"></div>
+        <div id="platform6" class="platform"></div>
+        <div id="platform7" class="platform trap slider"></div>
+        <div id="goal" class="platform"></div>
     </section>
 </div>
 
@@ -444,21 +576,13 @@
             var terminalVelocity = 12.5;
             var $platforms = $gameScreen.find(".platform");
 
-            $character.velocity = {x: 0, y: 0};
-
-
-            var curTime = (new Date()).getTime();
-            var prevTime;
-            var deltaTime;
+            $character.velocity = {x: 0, y: 0};;
 
             var gameLoop = function () {
                 if(inGame) {
-                    prevTime = curTime;
-                    curTime = Date.now();
-                    deltaTime = (curTime - prevTime) / 1000;
 
-                    if ($character.velocity.y + (gravity * deltaTime) <= terminalVelocity)
-                        $character.velocity.y += (gravity * deltaTime);
+                    if ($character.velocity.y + .35 <= terminalVelocity)
+                        $character.velocity.y += .35;
 
                     if (keysDown[68] || keysDown[39]) {
                         $character.velocity.x = 5;
@@ -466,12 +590,12 @@
                         $character.velocity.x = -5;
                     } else if ($character.velocity.x != 0) {
                         if ($character.velocity.x > 0) {
-                            $character.velocity.x -= 10 * deltaTime;
+                            $character.velocity.x -= .5;
                             if ($character.velocity.x < 0) {
                                 $character.velocity.x = 0;
                             }
                         } else {
-                            $character.velocity.x += 10 * deltaTime;
+                            $character.velocity.x += .5;
                             if ($character.velocity.x > 0) {
                                 $character.velocity.x = 0;
                             }
