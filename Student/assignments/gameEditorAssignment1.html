@@ -24,22 +24,22 @@
         border-radius: 50px;
     }
 
-    #left {
+    #left.platform {
         left: 50px;
         top: 500px;
     }
 
-    #right {
+    #right.platform {
         top: 400px;
         left: 250px;
     }
 
-    .trap {
+    .trap.platform {
         top: 300px;
         left: 350px;
     }
 
-    #goal {
+    #goal.platform {
         top: 400px;
         left: 500px;
     }
@@ -84,22 +84,22 @@
     border-radius: 50px;
 }
 
-#left {
+#left.platform {
     left: 50px;
     top: 500px;
 }
 
-#right {
+#right.platform {
     top: 400px;
     left: 250px;
 }
 
-.trap {
+.trap.platform {
     top: 300px;
     left: 350px;
 }
 
-#goal {
+#goal.platform {
     top: 400px;
     left: 500px;
 }
@@ -206,6 +206,8 @@
 <script>
     $(function () {
         $.slidebars();
+
+        $('.sb-toggle-right').click();
 
         var $gameScreen = $("#game-screen");
         var currentHTML = "";
